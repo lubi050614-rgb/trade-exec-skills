@@ -1,0 +1,751 @@
+{
+  "tests": 11,
+  "failures": 0,
+  "errors": 0,
+  "observations": {
+    "A3_cancel_request": {
+      "actual_status": "PARTIALLY_FILLED",
+      "actual_frozen": "6000.00",
+      "expected_frozen": "6000",
+      "note": "Explicit REQUEST must retain leaves and reservation until CONFIRM."
+    },
+    "B_10000": {
+      "ok": false,
+      "schema_version": "1.0",
+      "request_id": "r1",
+      "error": {
+        "code": "INSUFFICIENT_CASH",
+        "message": "INSUFFICIENT_CASH",
+        "retryable": false,
+        "details": {}
+      }
+    },
+    "B_10004.99": {
+      "ok": false,
+      "schema_version": "1.0",
+      "request_id": "r1",
+      "error": {
+        "code": "INSUFFICIENT_CASH",
+        "message": "INSUFFICIENT_CASH",
+        "retryable": false,
+        "details": {}
+      }
+    },
+    "B_10005": {
+      "ok": true,
+      "schema_version": "1.0",
+      "request_id": "r1",
+      "data": {
+        "order": {
+          "instrument_id": "SYNTH_A",
+          "side": "BUY",
+          "quantity": 1000,
+          "order_type": "LIMIT",
+          "limit_price": "10",
+          "time_in_force": "DAY",
+          "submitted_at": "2026-11-11T10:00:00+08:00",
+          "target_id": "target",
+          "target_version": 1,
+          "account_version": 1,
+          "order_id": "o-1",
+          "client_order_id": "B",
+          "status": "NEW",
+          "version": 2,
+          "filled_quantity": 0,
+          "leaves_quantity": 1000,
+          "canceled_quantity": 0,
+          "reserved_cash": "10005.00",
+          "reserved_quantity": 0,
+          "notional": "0",
+          "charged_fee": "0",
+          "cancel_pending": false
+        },
+        "commit_status": "COMMITTED",
+        "completed_steps": [
+          "order-register",
+          "order-reserve"
+        ]
+      },
+      "warnings": []
+    },
+    "C1_C6": [
+      {
+        "account_id": "account",
+        "asset_class": "FUTURES",
+        "currency": "CNY",
+        "balance": "100000",
+        "as_of": "2026-11-11T10:00:00+08:00",
+        "version": 2,
+        "equity": "100000",
+        "floating_pnl": "0",
+        "position_margin": "0",
+        "frozen_cash": "8010.00",
+        "available_cash": "91990.00",
+        "margin_shortfall": "0",
+        "risk_status": "NORMAL",
+        "positions": {},
+        "trade_date": "2026-11-11",
+        "reconciliation_status": "CONSISTENT"
+      },
+      {
+        "account_id": "account",
+        "asset_class": "FUTURES",
+        "currency": "CNY",
+        "balance": "99990",
+        "as_of": "2026-11-11T10:01:00+08:00",
+        "version": 4,
+        "equity": "99990",
+        "floating_pnl": "0",
+        "position_margin": "8000.00",
+        "frozen_cash": "0",
+        "available_cash": "91990.00",
+        "margin_shortfall": "0",
+        "risk_status": "NORMAL",
+        "positions": {
+          "SYNTH_F": {
+            "long_today": 2,
+            "long_yesterday": 0,
+            "short_today": 0,
+            "short_yesterday": 0,
+            "available_long_today": 2,
+            "available_long_yesterday": 0,
+            "available_short_today": 0,
+            "available_short_yesterday": 0,
+            "net_lots": 2,
+            "lots": [
+              {
+                "lot_id": "event-2026-11-11-0:cta-o1",
+                "side": "LONG",
+                "bucket": "TODAY",
+                "quantity": 2,
+                "basis_price": "4000",
+                "opened_trade_date": "2026-11-11"
+              }
+            ]
+          }
+        },
+        "trade_date": "2026-11-11",
+        "reconciliation_status": "CONSISTENT"
+      },
+      {
+        "account_id": "account",
+        "asset_class": "FUTURES",
+        "currency": "CNY",
+        "balance": "100990",
+        "as_of": "2026-11-11T15:00:00+08:00",
+        "version": 5,
+        "equity": "100990",
+        "floating_pnl": "0",
+        "position_margin": "8100.00",
+        "frozen_cash": "0",
+        "available_cash": "92890.00",
+        "margin_shortfall": "0",
+        "risk_status": "NORMAL",
+        "positions": {
+          "SYNTH_F": {
+            "long_today": 0,
+            "long_yesterday": 2,
+            "short_today": 0,
+            "short_yesterday": 0,
+            "available_long_today": 0,
+            "available_long_yesterday": 2,
+            "available_short_today": 0,
+            "available_short_yesterday": 0,
+            "net_lots": 2,
+            "lots": [
+              {
+                "lot_id": "event-2026-11-11-0:cta-o1",
+                "side": "LONG",
+                "bucket": "YESTERDAY",
+                "quantity": 2,
+                "basis_price": "4050",
+                "opened_trade_date": "2026-11-11"
+              }
+            ]
+          }
+        },
+        "trade_date": "2026-11-12",
+        "reconciliation_status": "CONSISTENT"
+      },
+      {
+        "account_id": "account",
+        "asset_class": "FUTURES",
+        "currency": "CNY",
+        "balance": "100990",
+        "as_of": "2026-11-12T10:01:00+08:00",
+        "version": 7,
+        "equity": "100390",
+        "floating_pnl": "-600",
+        "position_margin": "8040.00",
+        "frozen_cash": "5",
+        "available_cash": "92345.00",
+        "margin_shortfall": "0",
+        "risk_status": "NORMAL",
+        "positions": {
+          "SYNTH_F": {
+            "long_today": 0,
+            "long_yesterday": 2,
+            "short_today": 0,
+            "short_yesterday": 0,
+            "available_long_today": 0,
+            "available_long_yesterday": 1,
+            "available_short_today": 0,
+            "available_short_yesterday": 0,
+            "net_lots": 2,
+            "lots": [
+              {
+                "lot_id": "event-2026-11-11-0:cta-o1",
+                "side": "LONG",
+                "bucket": "YESTERDAY",
+                "quantity": 2,
+                "basis_price": "4050",
+                "opened_trade_date": "2026-11-11"
+              }
+            ]
+          }
+        },
+        "trade_date": "2026-11-12",
+        "reconciliation_status": "CONSISTENT"
+      },
+      {
+        "account_id": "account",
+        "asset_class": "FUTURES",
+        "currency": "CNY",
+        "balance": "100685",
+        "as_of": "2026-11-12T10:02:00+08:00",
+        "version": 9,
+        "equity": "100385",
+        "floating_pnl": "-300",
+        "position_margin": "4020.00",
+        "frozen_cash": "0",
+        "available_cash": "96365.00",
+        "margin_shortfall": "0",
+        "risk_status": "NORMAL",
+        "positions": {
+          "SYNTH_F": {
+            "long_today": 0,
+            "long_yesterday": 1,
+            "short_today": 0,
+            "short_yesterday": 0,
+            "available_long_today": 0,
+            "available_long_yesterday": 1,
+            "available_short_today": 0,
+            "available_short_yesterday": 0,
+            "net_lots": 1,
+            "lots": [
+              {
+                "lot_id": "event-2026-11-11-0:cta-o1",
+                "side": "LONG",
+                "bucket": "YESTERDAY",
+                "quantity": 1,
+                "basis_price": "4050",
+                "opened_trade_date": "2026-11-11"
+              }
+            ]
+          }
+        },
+        "trade_date": "2026-11-12",
+        "reconciliation_status": "CONSISTENT"
+      },
+      {
+        "account_id": "account",
+        "asset_class": "FUTURES",
+        "currency": "CNY",
+        "balance": "100485",
+        "as_of": "2026-11-12T15:00:00+08:00",
+        "version": 10,
+        "equity": "100485",
+        "floating_pnl": "0",
+        "position_margin": "4030.00",
+        "frozen_cash": "0",
+        "available_cash": "96455.00",
+        "margin_shortfall": "0",
+        "risk_status": "NORMAL",
+        "positions": {
+          "SYNTH_F": {
+            "long_today": 0,
+            "long_yesterday": 1,
+            "short_today": 0,
+            "short_yesterday": 0,
+            "available_long_today": 0,
+            "available_long_yesterday": 1,
+            "available_short_today": 0,
+            "available_short_yesterday": 0,
+            "net_lots": 1,
+            "lots": [
+              {
+                "lot_id": "event-2026-11-11-0:cta-o1",
+                "side": "LONG",
+                "bucket": "YESTERDAY",
+                "quantity": 1,
+                "basis_price": "4030",
+                "opened_trade_date": "2026-11-11"
+              }
+            ]
+          }
+        },
+        "trade_date": "2026-11-13",
+        "reconciliation_status": "CONSISTENT"
+      }
+    ],
+    "D1_D5": {
+      "accounts": [
+        {
+          "account_id": "account",
+          "asset_class": "FUTURES",
+          "currency": "CNY",
+          "balance": "100000",
+          "as_of": "2026-11-11T10:00:00+08:00",
+          "version": 2,
+          "equity": "100000",
+          "floating_pnl": "0",
+          "position_margin": "12000.00",
+          "frozen_cash": "15",
+          "available_cash": "87985.00",
+          "margin_shortfall": "0",
+          "risk_status": "NORMAL",
+          "positions": {
+            "SYNTH_F": {
+              "long_today": 0,
+              "long_yesterday": 3,
+              "short_today": 0,
+              "short_yesterday": 0,
+              "available_long_today": 0,
+              "available_long_yesterday": 0,
+              "available_short_today": 0,
+              "available_short_yesterday": 0,
+              "net_lots": 3,
+              "lots": [
+                {
+                  "lot_id": "initial-long",
+                  "side": "LONG",
+                  "bucket": "YESTERDAY",
+                  "quantity": 3,
+                  "basis_price": "4000",
+                  "opened_trade_date": "2026-11-10"
+                }
+              ]
+            }
+          },
+          "trade_date": "2026-11-11",
+          "reconciliation_status": "CONSISTENT"
+        },
+        {
+          "account_id": "account",
+          "asset_class": "FUTURES",
+          "currency": "CNY",
+          "balance": "99990",
+          "as_of": "2026-11-11T10:01:00+08:00",
+          "version": 4,
+          "equity": "99990",
+          "floating_pnl": "0",
+          "position_margin": "4000.00",
+          "frozen_cash": "5",
+          "available_cash": "95985.00",
+          "margin_shortfall": "0",
+          "risk_status": "NORMAL",
+          "positions": {
+            "SYNTH_F": {
+              "long_today": 0,
+              "long_yesterday": 1,
+              "short_today": 0,
+              "short_yesterday": 0,
+              "available_long_today": 0,
+              "available_long_yesterday": 0,
+              "available_short_today": 0,
+              "available_short_yesterday": 0,
+              "net_lots": 1,
+              "lots": [
+                {
+                  "lot_id": "initial-long",
+                  "side": "LONG",
+                  "bucket": "YESTERDAY",
+                  "quantity": 1,
+                  "basis_price": "4000",
+                  "opened_trade_date": "2026-11-10"
+                }
+              ]
+            }
+          },
+          "trade_date": "2026-11-11",
+          "reconciliation_status": "CONSISTENT"
+        },
+        {
+          "account_id": "account",
+          "asset_class": "FUTURES",
+          "currency": "CNY",
+          "balance": "99985",
+          "as_of": "2026-11-11T10:02:00+08:00",
+          "version": 6,
+          "equity": "99985",
+          "floating_pnl": "0",
+          "position_margin": "0",
+          "frozen_cash": "0",
+          "available_cash": "99985",
+          "margin_shortfall": "0",
+          "risk_status": "NORMAL",
+          "positions": {
+            "SYNTH_F": {
+              "long_today": 0,
+              "long_yesterday": 0,
+              "short_today": 0,
+              "short_yesterday": 0,
+              "available_long_today": 0,
+              "available_long_yesterday": 0,
+              "available_short_today": 0,
+              "available_short_yesterday": 0,
+              "net_lots": 0,
+              "lots": []
+            }
+          },
+          "trade_date": "2026-11-11",
+          "reconciliation_status": "CONSISTENT"
+        },
+        {
+          "account_id": "account",
+          "asset_class": "FUTURES",
+          "currency": "CNY",
+          "balance": "99985",
+          "as_of": "2026-11-11T10:02:00+08:00",
+          "version": 7,
+          "equity": "99985",
+          "floating_pnl": "0",
+          "position_margin": "0",
+          "frozen_cash": "8010.00",
+          "available_cash": "91975.00",
+          "margin_shortfall": "0",
+          "risk_status": "NORMAL",
+          "positions": {
+            "SYNTH_F": {
+              "long_today": 0,
+              "long_yesterday": 0,
+              "short_today": 0,
+              "short_yesterday": 0,
+              "available_long_today": 0,
+              "available_long_yesterday": 0,
+              "available_short_today": 0,
+              "available_short_yesterday": 0,
+              "net_lots": 0,
+              "lots": []
+            }
+          },
+          "trade_date": "2026-11-11",
+          "reconciliation_status": "CONSISTENT"
+        },
+        {
+          "account_id": "account",
+          "asset_class": "FUTURES",
+          "currency": "CNY",
+          "balance": "99975",
+          "as_of": "2026-11-11T10:03:00+08:00",
+          "version": 9,
+          "equity": "99975",
+          "floating_pnl": "0",
+          "position_margin": "8000.00",
+          "frozen_cash": "0",
+          "available_cash": "91975.00",
+          "margin_shortfall": "0",
+          "risk_status": "NORMAL",
+          "positions": {
+            "SYNTH_F": {
+              "long_today": 0,
+              "long_yesterday": 0,
+              "short_today": 2,
+              "short_yesterday": 0,
+              "available_long_today": 0,
+              "available_long_yesterday": 0,
+              "available_short_today": 2,
+              "available_short_yesterday": 0,
+              "net_lots": -2,
+              "lots": [
+                {
+                  "lot_id": "event-2026-11-11-2:cta-o2",
+                  "side": "SHORT",
+                  "bucket": "TODAY",
+                  "quantity": 2,
+                  "basis_price": "4000",
+                  "opened_trade_date": "2026-11-11"
+                }
+              ]
+            }
+          },
+          "trade_date": "2026-11-11",
+          "reconciliation_status": "CONSISTENT"
+        }
+      ],
+      "expected_D4_frozen": "8010",
+      "actual_D4_frozen": "8010.00"
+    },
+    "E_supported_projection": {
+      "cash": "18995.00",
+      "fills": 1,
+      "note": "External cumulative order callbacks and E-prime are not implemented."
+    },
+    "conflict_not_latched": {
+      "conflict": {
+        "ok": false,
+        "schema_version": "1.0",
+        "request_id": "r3",
+        "error": {
+          "code": "FILL_CONFLICT",
+          "message": "FILL_CONFLICT",
+          "retryable": false,
+          "details": {}
+        }
+      },
+      "state_unchanged": false,
+      "new_order": {
+        "ok": false,
+        "schema_version": "1.0",
+        "request_id": "r4",
+        "error": {
+          "code": "RECONCILE_REQUIRED",
+          "message": "RECONCILE_REQUIRED",
+          "retryable": false,
+          "details": {}
+        }
+      }
+    },
+    "stale_cta_target": {
+      "new_target": 0,
+      "new_plan": {
+        "plan_id": "target:2:SYNTH_F",
+        "contract_id": "SYNTH_F",
+        "target_net_lots": 0,
+        "leg_ids": [],
+        "hash": "6c20ed5d2c271fdf11ad732da766a94fb9cc751f91f52bd6695dba68fc232b3c",
+        "normalization": {
+          "actual_long_lots": 0,
+          "actual_short_lots": 0,
+          "actual_net_lots": 0,
+          "pending_open_lots": 0,
+          "pending_close_lots": 0,
+          "gap_lots": 0,
+          "conflicting_order_ids": [],
+          "retained_order_ids": []
+        },
+        "commit_status": "COMMITTED",
+        "legs": []
+      },
+      "old_leg_submission": {
+        "ok": false,
+        "schema_version": "1.0",
+        "request_id": "r5",
+        "error": {
+          "code": "STALE_TARGET_VERSION",
+          "message": "STALE_TARGET_VERSION",
+          "retryable": false,
+          "details": {}
+        }
+      }
+    },
+    "stock_reserve_conflict": {
+      "result": {
+        "ok": false,
+        "schema_version": "1.0",
+        "request_id": "r4",
+        "error": {
+          "code": "OPEN_ORDER_CONFLICT",
+          "message": "OPEN_ORDER_CONFLICT",
+          "retryable": false,
+          "details": {}
+        }
+      },
+      "orders": {
+        "o-1": {
+          "instrument_id": "SYNTH_A",
+          "side": "BUY",
+          "quantity": 100,
+          "order_type": "LIMIT",
+          "limit_price": "10",
+          "time_in_force": "DAY",
+          "submitted_at": "2026-11-11T10:00:00+08:00",
+          "target_id": "target",
+          "target_version": 1,
+          "account_version": 1,
+          "order_id": "o-1",
+          "client_order_id": "buy",
+          "status": "NEW",
+          "version": 2,
+          "filled_quantity": 0,
+          "leaves_quantity": 100,
+          "canceled_quantity": 0,
+          "reserved_cash": "1005.00",
+          "reserved_quantity": 0,
+          "notional": "0",
+          "charged_fee": "0",
+          "cancel_pending": false
+        },
+        "o-2": {
+          "instrument_id": "SYNTH_A",
+          "side": "SELL",
+          "quantity": 100,
+          "order_type": "LIMIT",
+          "limit_price": "10",
+          "time_in_force": "DAY",
+          "submitted_at": "2026-11-11T10:00:00+08:00",
+          "target_id": "target",
+          "target_version": 2,
+          "account_version": 1,
+          "order_id": "o-2",
+          "client_order_id": "sell",
+          "status": "PENDING_RESERVATION",
+          "version": 1,
+          "filled_quantity": 0,
+          "leaves_quantity": 100,
+          "canceled_quantity": 0,
+          "reserved_cash": "0",
+          "reserved_quantity": 0,
+          "notional": "0",
+          "charged_fee": "0",
+          "cancel_pending": false
+        }
+      }
+    },
+    "sell_fee_shortfall": {
+      "submission": {
+        "ok": false,
+        "schema_version": "1.0",
+        "request_id": "r1",
+        "error": {
+          "code": "INSUFFICIENT_CASH",
+          "message": "INSUFFICIENT_CASH",
+          "retryable": false,
+          "details": {}
+        }
+      },
+      "execution": {
+        "ok": true,
+        "schema_version": "1.0",
+        "request_id": "r2",
+        "data": {
+          "commit_status": "COMMITTED",
+          "fills": [],
+          "account": {
+            "account_id": "account",
+            "currency": "CNY",
+            "cash_balance": "0",
+            "as_of": "2026-11-11T10:00:00+08:00",
+            "version": 1,
+            "positions": {
+              "SYNTH_A": {
+                "quantity": 1,
+                "settled_quantity": 1,
+                "valuation_price": "1",
+                "exchange": "SSE",
+                "board": "SIM_MAIN",
+                "unsettled": [],
+                "frozen_sell_quantity": 0,
+                "sellable_quantity": 1
+              }
+            },
+            "frozen_cash": "0.00",
+            "available_cash": "0.00",
+            "total_assets": "1.00",
+            "snapshot_id": "1",
+            "reconciliation_status": "CONSISTENT"
+          }
+        },
+        "warnings": []
+      },
+      "orders": {},
+      "expected": "Reject at submission: available 0 plus proceeds 1 cannot cover fee 5."
+    },
+    "stock_target_drift": {
+      "original": [
+        {
+          "instrument_id": "SYNTH_A",
+          "raw_target_quantity": "1000.000",
+          "target_quantity": 1000,
+          "rounding_weight_deviation": "0.0"
+        }
+      ],
+      "after_fee": [
+        {
+          "instrument_id": "SYNTH_A",
+          "raw_target_quantity": "1000.000",
+          "target_quantity": 1000,
+          "rounding_weight_deviation": "0.0000050002500125006250312516"
+        }
+      ],
+      "new_drafts": []
+    },
+    "stock_external_fill_recovery": {
+      "upper_commit": "COMMITTED",
+      "fill_status": "BOOKED",
+      "account": {
+        "account_id": "account",
+        "currency": "CNY",
+        "cash_balance": "95995.00",
+        "as_of": "2026-11-11T10:01:00+08:00",
+        "version": 3,
+        "positions": {
+          "SYNTH_A": {
+            "quantity": 400,
+            "settled_quantity": 0,
+            "valuation_price": "10",
+            "exchange": "SSE",
+            "board": "SIM_MAIN",
+            "unsettled": [
+              {
+                "quantity": 400,
+                "trade_date": "2026-11-11"
+              }
+            ],
+            "frozen_sell_quantity": 0,
+            "sellable_quantity": 0
+          }
+        },
+        "frozen_cash": "6000.00",
+        "available_cash": "89995.00",
+        "total_assets": "99995.00",
+        "snapshot_id": "3",
+        "reconciliation_status": "CONSISTENT"
+      }
+    },
+    "cta_external_fill_recovery": {
+      "upper_commit": "COMMITTED",
+      "fill_status": "BOOKED",
+      "account": {
+        "account_id": "account",
+        "asset_class": "FUTURES",
+        "currency": "CNY",
+        "balance": "99990",
+        "as_of": "2026-11-11T10:01:00+08:00",
+        "version": 4,
+        "equity": "99990",
+        "floating_pnl": "0",
+        "position_margin": "4000.00",
+        "frozen_cash": "5",
+        "available_cash": "95985.00",
+        "margin_shortfall": "0",
+        "risk_status": "NORMAL",
+        "positions": {
+          "SYNTH_F": {
+            "long_today": 0,
+            "long_yesterday": 1,
+            "short_today": 0,
+            "short_yesterday": 0,
+            "available_long_today": 0,
+            "available_long_yesterday": 0,
+            "available_short_today": 0,
+            "available_short_yesterday": 0,
+            "net_lots": 1,
+            "lots": [
+              {
+                "lot_id": "initial-long",
+                "side": "LONG",
+                "bucket": "YESTERDAY",
+                "quantity": 1,
+                "basis_price": "4000",
+                "opened_trade_date": "2026-11-10"
+              }
+            ]
+          }
+        },
+        "trade_date": "2026-11-11",
+        "reconciliation_status": "CONSISTENT"
+      }
+    }
+  }
+}

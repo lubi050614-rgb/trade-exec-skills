@@ -1,0 +1,227 @@
+[
+  {
+    "skill": "order-plan",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-precheck",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-submit",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-cancel",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "execution-simulate",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-query",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-open-quantity",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-target-gap",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-rule-check",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "execution-fee-calculate",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-resource-check",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-register",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-reserve",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-state-read",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-cancel-remainder",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-release-reserve",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "execution-match",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "execution-fill-record",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "order-apply-fill",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "account-apply-fill",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "execution-fill-list",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-plan",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-precheck",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-submit",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-cancel",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-execution-simulate",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-query",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-daily-settle",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-roll-plan",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-contract-spec",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-trading-session",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-position-gap",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-offset-split",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-rule-check",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-margin-calculate",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-fee-calculate",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-register",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-release",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-match",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-fill-record",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-state-update",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-fill-book",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-order-detail",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-settlement-apply",
+    "passed": true,
+    "message": "Skill is valid!"
+  },
+  {
+    "skill": "cta-roll-progress",
+    "passed": true,
+    "message": "Skill is valid!"
+  }
+]

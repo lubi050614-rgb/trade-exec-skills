@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "order": {
+              "type": "object",
+              "properties": {
+                "leg_id": {
+                  "type": "string"
+                },
+                "plan_id": {
+                  "type": "string"
+                },
+                "contract_id": {
+                  "type": "string"
+                },
+                "side": {
+                  "type": "string"
+                },
+                "offset": {
+                  "type": "string"
+                },
+                "lots": {
+                  "type": "integer"
+                },
+                "limit_price": {
+                  "type": "string"
+                },
+                "order_type": {
+                  "type": "string"
+                },
+                "time_in_force": {
+                  "type": "string"
+                },
+                "target_id": {
+                  "type": "string"
+                },
+                "target_version": {
+                  "type": "integer"
+                },
+                "trade_date": {
+                  "type": "string"
+                },
+                "dependencies": {
+                  "type": "array",
+                  "items": {}
+                },
+                "buffer": {
+                  "type": "string"
+                },
+                "order_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "submitted_at": {
+                  "type": "string"
+                },
+                "account_version": {
+                  "type": "integer"
+                },
+                "client_order_id": {
+                  "type": "string"
+                },
+                "sequence": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "integer"
+                },
+                "original_lots": {
+                  "type": "integer"
+                },
+                "filled_lots": {
+                  "type": "integer"
+                },
+                "leaves_lots": {
+                  "type": "integer"
+                },
+                "canceled_lots": {
+                  "type": "integer"
+                },
+                "reserved_cash": {
+                  "type": "string"
+                },
+                "claims": {
+                  "type": "array",
+                  "items": {}
+                },
+                "charged_fee": {
+                  "type": "string"
+                },
+                "notional": {
+                  "type": "string"
+                },
+                "release_pending": {
+                  "type": "boolean"
+                },
+                "cancel_pending": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "leg_id",
+                "plan_id",
+                "contract_id",
+                "side",
+                "offset",
+                "lots",
+                "limit_price",
+                "order_type",
+                "time_in_force",
+                "target_id",
+                "target_version",
+                "trade_date",
+                "dependencies",
+                "buffer",
+                "order_id",
+                "submitted_at",
+                "account_version",
+                "client_order_id",
+                "sequence",
+                "status",
+                "version",
+                "original_lots",
+                "filled_lots",
+                "leaves_lots",
+                "canceled_lots",
+                "reserved_cash",
+                "claims",
+                "charged_fee",
+                "notional",
+                "release_pending"
+              ],
+              "additionalProperties": true
+            },
+            "release": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "released_cash": {
+                      "type": "string"
+                    },
+                    "remaining_cash": {
+                      "type": "string"
+                    },
+                    "remaining_claims": {
+                      "type": "array",
+                      "items": {}
+                    },
+                    "order_version": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "released_cash",
+                    "remaining_cash",
+                    "remaining_claims",
+                    "order_version"
+                  ],
+                  "additionalProperties": true
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "commit_status": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "order",
+            "release",
+            "commit_status"
+          ],
+          "additionalProperties": true
+        },
+        "warnings": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "data",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "retryable",
+            "details"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

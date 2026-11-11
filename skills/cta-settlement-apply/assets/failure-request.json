@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "account_id": "mock-futures",
+  "simulation_id": "does-not-exist",
+  "asset_class": "FUTURES",
+  "idempotency_key": "example-1",
+  "data": {
+    "trade_date": "2026-01-05",
+    "settlement_version": 1,
+    "as_of": "2026-01-05T15:00:00+08:00",
+    "prices": [
+      {
+        "contract_id": "SIM:OLD",
+        "prev_settlement_price": "100",
+        "settlement_price": "110"
+      }
+    ]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-rule-check",
+  "data": {
+    "valid": true,
+    "profile_version": "1"
+  },
+  "warnings": []
+}

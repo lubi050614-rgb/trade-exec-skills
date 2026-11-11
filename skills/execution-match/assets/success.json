@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-execution-match",
+  "data": {
+    "quantity": 300,
+    "price": "10",
+    "expected_version": 2,
+    "event_id": "bar-1",
+    "model_version": "open-conservative-v1"
+  },
+  "warnings": []
+}

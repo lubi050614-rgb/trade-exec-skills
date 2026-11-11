@@ -1,0 +1,332 @@
+{
+  "order-plan": {
+    "layer": "Upper",
+    "write": true,
+    "fields": [
+      "account_snapshot_id",
+      "as_of",
+      "total_assets",
+      "coverage",
+      "target_id",
+      "target_version",
+      "targets",
+      "weight_tolerance",
+      "cash_buffer"
+    ]
+  },
+  "order-precheck": {
+    "layer": "Upper",
+    "write": false,
+    "fields": [
+      "order"
+    ]
+  },
+  "order-submit": {
+    "layer": "Upper",
+    "write": true,
+    "fields": [
+      "order",
+      "client_order_id"
+    ]
+  },
+  "order-cancel": {
+    "layer": "Upper",
+    "write": true,
+    "fields": [
+      "order_id",
+      "expected_version",
+      "action"
+    ]
+  },
+  "execution-simulate": {
+    "layer": "Upper",
+    "write": true,
+    "fields": [
+      "bar",
+      "visible_at",
+      "participation_rate",
+      "slippage",
+      "end_of_day",
+      "fail_after"
+    ]
+  },
+  "order-query": {
+    "layer": "Upper",
+    "write": false,
+    "fields": [
+      "order_id",
+      "offset",
+      "limit"
+    ]
+  },
+  "order-open-quantity": {
+    "layer": "Atomic",
+    "write": false,
+    "fields": [
+      "instrument_id"
+    ]
+  },
+  "order-target-gap": {
+    "layer": "Atomic",
+    "write": false,
+    "fields": [
+      "target_quantity",
+      "actual_quantity",
+      "buy_quantity",
+      "sell_quantity"
+    ]
+  },
+  "order-rule-check": {
+    "layer": "Atomic",
+    "write": false,
+    "fields": [
+      "order"
+    ]
+  },
+  "execution-fee-calculate": {
+    "layer": "Atomic",
+    "write": false,
+    "fields": [
+      "side",
+      "notional",
+      "cumulative_notional",
+      "charged_fee"
+    ]
+  },
+  "order-resource-check": {
+    "layer": "Atomic",
+    "write": false,
+    "fields": [
+      "order"
+    ]
+  },
+  "order-register": {
+    "layer": "Atomic",
+    "write": true,
+    "fields": [
+      "order",
+      "client_order_id"
+    ]
+  },
+  "order-reserve": {
+    "layer": "Atomic",
+    "write": true,
+    "fields": [
+      "order_id",
+      "expected_version",
+      "account_version"
+    ]
+  },
+  "order-state-read": {
+    "layer": "Atomic",
+    "write": false,
+    "fields": [
+      "order_id"
+    ]
+  },
+  "order-cancel-remainder": {
+    "layer": "Atomic",
+    "write": true,
+    "fields": [
+      "order_id",
+      "expected_version"
+    ]
+  },
+  "order-release-reserve": {
+    "layer": "Atomic",
+    "write": true,
+    "fields": [
+      "order_id",
+      "expected_version"
+    ]
+  },
+  "execution-match": {
+    "layer": "Atomic",
+    "write": false,
+    "fields": [
+      "order_id",
+      "bar",
+      "participation_rate",
+      "slippage"
+    ]
+  },
+  "execution-fill-record": {
+    "layer": "Atomic",
+    "write": true,
+    "fields": [
+      "order_id",
+      "fill_id",
+      "event_id",
+      "expected_version"
+    ]
+  },
+  "order-apply-fill": {
+    "layer": "Atomic",
+    "write": true,
+    "fields": [
+      "order_id",
+      "fill_id",
+      "expected_version"
+    ]
+  },
+  "account-apply-fill": {
+    "layer": "Atomic",
+    "write": true,
+    "fields": [
+      "fill_id"
+    ]
+  },
+  "execution-fill-list": {
+    "layer": "Atomic",
+    "write": false,
+    "fields": [
+      "order_id",
+      "offset",
+      "limit"
+    ]
+  },
+  "cta-order-plan": {
+    "layer": "Upper",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Persist integer net-lot plans with close-before-open dependencies; do not accept stock weights."
+  },
+  "cta-order-precheck": {
+    "layer": "Upper",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Check the latest contract, session, dependencies and resources without freezing."
+  },
+  "cta-order-submit": {
+    "layer": "Upper",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Revalidate a persisted plan leg and atomically register and freeze resources."
+  },
+  "cta-order-cancel": {
+    "layer": "Upper",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Cancel remaining lots and release resources while preserving actual fills."
+  },
+  "cta-execution-simulate": {
+    "layer": "Upper",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Advance one completed futures bar through matching, booking and release."
+  },
+  "cta-order-query": {
+    "layer": "Upper",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Read order, fills, reservations and account reconciliation status."
+  },
+  "cta-daily-settle": {
+    "layer": "Upper",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Apply explicit-price daily marked-to-market settlement and day migration."
+  },
+  "cta-roll-plan": {
+    "layer": "Upper",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Persist linked old-close/new-open plans; plans do not imply executed progress."
+  },
+  "cta-contract-spec": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Read the configured contract and trade-date rule profile."
+  },
+  "cta-trading-session": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Resolve an explicit calendar interval to a trading day, including night sessions."
+  },
+  "cta-position-gap": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Read gross positions and active open/close leaves to calculate signed net-lot gap."
+  },
+  "cta-offset-split": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Calculate side and today/yesterday closing splits followed by opening lots."
+  },
+  "cta-order-rule-check": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Read authoritative rules and resources to validate a persisted plan leg; do not freeze."
+  },
+  "cta-margin-calculate": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Calculate explicit RATE or FIXED margin and notional; do not book money."
+  },
+  "cta-fee-calculate": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Calculate per-lot or notional incremental fees using the explicit offset."
+  },
+  "cta-order-register": {
+    "layer": "Atomic",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Atomically register and freeze one validated persisted plan leg."
+  },
+  "cta-order-release": {
+    "layer": "Atomic",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Release only excess resources justified by persisted remaining lots and fills."
+  },
+  "cta-order-match": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Calculate a conservative opening-price candidate; do not occupy capacity or book."
+  },
+  "cta-fill-record": {
+    "layer": "Atomic",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Recompute from a persisted market event and atomically record a fill and occupy capacity."
+  },
+  "cta-order-state-update": {
+    "layer": "Atomic",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Apply a persisted fill or versioned cancellation to order quantities only."
+  },
+  "cta-fill-book": {
+    "layer": "Atomic",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Idempotently book an existing applied fill, fees, realized PnL and lot claims."
+  },
+  "cta-order-detail": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Read current order, fills, reservations and accounting status without mutation."
+  },
+  "cta-settlement-apply": {
+    "layer": "Atomic",
+    "write": true,
+    "asset_class": "FUTURES",
+    "description": "Book only incremental daily holding PnL and migrate lot buckets once."
+  },
+  "cta-roll-progress": {
+    "layer": "Atomic",
+    "write": false,
+    "asset_class": "FUTURES",
+    "description": "Read actual booked old-close/new-open lots and unconnected exposure."
+  }
+}

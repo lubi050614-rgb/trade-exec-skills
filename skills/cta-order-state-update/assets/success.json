@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "leg_id": "target1:1:SIM:OLD:leg1",
+    "plan_id": "target1:1:SIM:OLD",
+    "contract_id": "SIM:OLD",
+    "side": "SELL",
+    "offset": "CLOSE_YESTERDAY",
+    "lots": 3,
+    "limit_price": "100",
+    "order_type": "LIMIT",
+    "time_in_force": "DAY",
+    "target_id": "target1",
+    "target_version": 1,
+    "trade_date": "2026-01-05",
+    "dependencies": [],
+    "buffer": "0",
+    "order_id": "cta-o1",
+    "submitted_at": "2026-01-05T09:01:00+08:00",
+    "account_version": 1,
+    "client_order_id": "client1",
+    "sequence": 1,
+    "status": "PARTIALLY_FILLED",
+    "version": 2,
+    "original_lots": 3,
+    "filled_lots": 2,
+    "leaves_lots": 1,
+    "canceled_lots": 0,
+    "reserved_cash": "3",
+    "claims": [
+      {
+        "lot_id": "initial",
+        "quantity": 3,
+        "bucket": "YESTERDAY"
+      }
+    ],
+    "charged_fee": "2",
+    "notional": "2000",
+    "release_pending": false,
+    "cancel_pending": false,
+    "average_price": "100"
+  },
+  "warnings": []
+}

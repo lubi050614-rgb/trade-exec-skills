@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "released_cash": "3",
+    "remaining_cash": "0",
+    "remaining_claims": [],
+    "order_version": 3
+  },
+  "warnings": []
+}

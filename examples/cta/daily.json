@@ -1,0 +1,20 @@
+{
+  "event_id": "cta-day1",
+  "contract_id": "SIM:OLD",
+  "multiplier": 10,
+  "volume_unit": "lots",
+  "frequency": "1d",
+  "trade_date": "2026-01-05",
+  "start_at": "2026-01-05T09:00:00+08:00",
+  "end_at": "2026-01-05T15:00:00+08:00",
+  "open": "100",
+  "high": "100",
+  "low": "100",
+  "close": "100",
+  "volume": 3,
+  "tradable": true,
+  "price_limit_clear": true,
+  "price_basis": "UNADJUSTED",
+  "synthetic": true,
+  "source": "synthetic"
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-order-query",
+  "account_id": "mock-SSE",
+  "simulation_id": "demo-SSE",
+  "data": {
+    "order_id": "o-1"
+  },
+  "idempotency_key": "plan-1"
+}

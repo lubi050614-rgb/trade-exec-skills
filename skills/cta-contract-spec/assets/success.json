@@ -1,0 +1,58 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "profile_id": "simulation_fixture",
+    "version": "1",
+    "exchange": "SIM_SHFE",
+    "product": "SIM",
+    "multiplier": 10,
+    "price_tick": "1",
+    "min_lots": 1,
+    "lot_step": 1,
+    "margin_mode": "RATE",
+    "margin": {
+      "LONG": "0.10",
+      "SHORT": "0.12"
+    },
+    "fees": {
+      "OPEN": {
+        "mode": "PER_LOT",
+        "value": "2"
+      },
+      "CLOSE": {
+        "mode": "PER_LOT",
+        "value": "2"
+      },
+      "CLOSE_TODAY": {
+        "mode": "PER_LOT",
+        "value": "4"
+      },
+      "CLOSE_YESTERDAY": {
+        "mode": "PER_LOT",
+        "value": "1"
+      }
+    },
+    "close_priority": [
+      "YESTERDAY",
+      "TODAY"
+    ],
+    "separate_close": true,
+    "lower_price": "10",
+    "upper_price": "200",
+    "trade_dates": [
+      "2026-01-05",
+      "2026-01-06",
+      "2026-01-12"
+    ],
+    "previous_settlement": {
+      "2026-01-05": "100",
+      "2026-01-06": "110",
+      "2026-01-12": "105"
+    },
+    "disclaimer": "Synthetic futures rules; no official exchange compliance claimed",
+    "contract_id": "SIM:OLD"
+  },
+  "warnings": []
+}

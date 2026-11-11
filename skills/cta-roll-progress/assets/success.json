@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "roll_id": "roll1",
+    "closed_old_lots": 0,
+    "opened_new_lots": 0,
+    "remaining_old_lots": 2,
+    "remaining_new_lots": 2,
+    "unconnected_lots": 0,
+    "complete": false
+  },
+  "warnings": []
+}

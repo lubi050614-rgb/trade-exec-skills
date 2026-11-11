@@ -1,0 +1,278 @@
+{
+  "name": "execution-tools",
+  "version": "0.2.0",
+  "description": "21 stock + 24 CTA simulation tools",
+  "mode": "simulation_only",
+  "skills": [
+    {
+      "name": "order-plan",
+      "path": "skills/order-plan",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-precheck",
+      "path": "skills/order-precheck",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-submit",
+      "path": "skills/order-submit",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-cancel",
+      "path": "skills/order-cancel",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "execution-simulate",
+      "path": "skills/execution-simulate",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-query",
+      "path": "skills/order-query",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-open-quantity",
+      "path": "skills/order-open-quantity",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-target-gap",
+      "path": "skills/order-target-gap",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-rule-check",
+      "path": "skills/order-rule-check",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "execution-fee-calculate",
+      "path": "skills/execution-fee-calculate",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-resource-check",
+      "path": "skills/order-resource-check",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-register",
+      "path": "skills/order-register",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-reserve",
+      "path": "skills/order-reserve",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-state-read",
+      "path": "skills/order-state-read",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-cancel-remainder",
+      "path": "skills/order-cancel-remainder",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-release-reserve",
+      "path": "skills/order-release-reserve",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "execution-match",
+      "path": "skills/execution-match",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "execution-fill-record",
+      "path": "skills/execution-fill-record",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "order-apply-fill",
+      "path": "skills/order-apply-fill",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "account-apply-fill",
+      "path": "skills/account-apply-fill",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "execution-fill-list",
+      "path": "skills/execution-fill-list",
+      "entry": "scripts/run.py",
+      "asset_class": "STOCK"
+    },
+    {
+      "name": "cta-order-plan",
+      "path": "skills/cta-order-plan",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-precheck",
+      "path": "skills/cta-order-precheck",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-submit",
+      "path": "skills/cta-order-submit",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-cancel",
+      "path": "skills/cta-order-cancel",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-execution-simulate",
+      "path": "skills/cta-execution-simulate",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-query",
+      "path": "skills/cta-order-query",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-daily-settle",
+      "path": "skills/cta-daily-settle",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-roll-plan",
+      "path": "skills/cta-roll-plan",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-contract-spec",
+      "path": "skills/cta-contract-spec",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-trading-session",
+      "path": "skills/cta-trading-session",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-position-gap",
+      "path": "skills/cta-position-gap",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-offset-split",
+      "path": "skills/cta-offset-split",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-rule-check",
+      "path": "skills/cta-order-rule-check",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-margin-calculate",
+      "path": "skills/cta-margin-calculate",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-fee-calculate",
+      "path": "skills/cta-fee-calculate",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-register",
+      "path": "skills/cta-order-register",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-release",
+      "path": "skills/cta-order-release",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-match",
+      "path": "skills/cta-order-match",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-fill-record",
+      "path": "skills/cta-fill-record",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-state-update",
+      "path": "skills/cta-order-state-update",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-fill-book",
+      "path": "skills/cta-fill-book",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-order-detail",
+      "path": "skills/cta-order-detail",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-settlement-apply",
+      "path": "skills/cta-settlement-apply",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    },
+    {
+      "name": "cta-roll-progress",
+      "path": "skills/cta-roll-progress",
+      "entry": "scripts/run.py",
+      "asset_class": "FUTURES"
+    }
+  ]
+}

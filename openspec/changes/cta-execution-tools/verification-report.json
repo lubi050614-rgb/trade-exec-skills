@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-11-11T16:54:13.799767+08:00",
+  "checks": [
+    {
+      "name": "unittest",
+      "status": "passed",
+      "command": [
+        "D:\\Project\\factor_research_tool\\.venv\\Scripts\\python.exe",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "stdout": "",
+      "stderr": "test_actual_night_execution_uses_explicit_future_trade_date (test_cta.CTATests.test_actual_night_execution_uses_explicit_future_trade_date) ... ok\ntest_all_contracts_success_and_standalone_entries (test_cta.CTATests.test_all_contracts_success_and_standalone_entries) ... ok\ntest_atomic_path_matches_upper_and_wrong_order_rejected (test_cta.CTATests.test_atomic_path_matches_upper_and_wrong_order_rejected) ... ok\ntest_calendar_night_holiday_and_no_midnight_settlement (test_cta.CTATests.test_calendar_night_holiday_and_no_midnight_settlement) ... ok\ntest_concurrent_close_reservations_do_not_double_freeze (test_cta.CTATests.test_concurrent_close_reservations_do_not_double_freeze) ... ok\ntest_daily_and_minute_and_market_data_boundaries (test_cta.CTATests.test_daily_and_minute_and_market_data_boundaries) ... ok\ntest_exported_cta_skill_without_repository_imports (test_cta.CTATests.test_exported_cta_skill_without_repository_imports) ... ok\ntest_fixed_margin_and_notional_fees (test_cta.CTATests.test_fixed_margin_and_notional_fees) ... ok\ntest_hedged_positions_and_stock_payload_rejected (test_cta.CTATests.test_hedged_positions_and_stock_payload_rejected) ... ok\ntest_idempotency_and_event_conflicts (test_cta.CTATests.test_idempotency_and_event_conflicts) ... ok\ntest_long_short_settlement_and_conflicting_replay (test_cta.CTATests.test_long_short_settlement_and_conflicting_replay) ... ok\ntest_market_short_protection_and_margin_conversion (test_cta.CTATests.test_market_short_protection_and_margin_conversion) ... ok\ntest_missing_settlement_price_and_too_early (test_cta.CTATests.test_missing_settlement_price_and_too_early) ... ok\ntest_recovery_four_stages_after_restart (test_cta.CTATests.test_recovery_four_stages_after_restart) ... ok\ntest_registration_and_reservation_all_or_none (test_cta.CTATests.test_registration_and_reservation_all_or_none) ... ok\ntest_reverse_partial_close_then_open_and_actual_net (test_cta.CTATests.test_reverse_partial_close_then_open_and_actual_net) ... ok\ntest_risk_shortfall_blocks_new_open (test_cta.CTATests.test_risk_shortfall_blocks_new_open) ... ok\ntest_roll_cannot_reuse_unlinked_opening_plan (test_cta.CTATests.test_roll_cannot_reuse_unlinked_opening_plan) ... ok\ntest_roll_partial_new_fill_reports_unconnected_exposure (test_cta.CTATests.test_roll_partial_new_fill_reports_unconnected_exposure) ... ok\ntest_second_day_uses_actual_previous_settlement_once (test_cta.CTATests.test_second_day_uses_actual_previous_settlement_once) ... ok\ntest_settlement_does_not_double_count_closed_pnl_or_fees (test_cta.CTATests.test_settlement_does_not_double_count_closed_pnl_or_fees) ... ok\ntest_shared_capacity_and_causal_bars (test_cta.CTATests.test_shared_capacity_and_causal_bars) ... ok\ntest_stale_preplanned_target_cannot_overtrade (test_cta.CTATests.test_stale_preplanned_target_cannot_overtrade) ... ok\ntest_today_yesterday_fees_freeze_and_cancel (test_cta.CTATests.test_today_yesterday_fees_freeze_and_cancel) ... ok\ntest_actual_export_zip_is_self_contained (test_execution.ExecutionTests.test_actual_export_zip_is_self_contained) ... ok\ntest_atomic_cannot_skip_matching_priority_or_duplicate_order_event (test_execution.ExecutionTests.test_atomic_cannot_skip_matching_priority_or_duplicate_order_event) ... ok\ntest_atomic_ordering_and_read_purity (test_execution.ExecutionTests.test_atomic_ordering_and_read_purity) ... ok\ntest_concurrent_reservation (test_execution.ExecutionTests.test_concurrent_reservation) ... ok\ntest_duplicate_event_preserves_entire_account_and_order (test_execution.ExecutionTests.test_duplicate_event_preserves_entire_account_and_order) ... ok\ntest_exported_entrypoints_and_schemas (test_execution.ExecutionTests.test_exported_entrypoints_and_schemas) ... ok\ntest_idempotency (test_execution.ExecutionTests.test_idempotency) ... ok\ntest_market_protection_halt_frequency_and_ohlc (test_execution.ExecutionTests.test_market_protection_halt_frequency_and_ohlc) ... ok\ntest_open_conflicts_and_rule_differences (test_execution.ExecutionTests.test_open_conflicts_and_rule_differences) ... ok\ntest_partial_fee_minimum_once (test_execution.ExecutionTests.test_partial_fee_minimum_once) ... ok\ntest_provider_mapping (test_execution.ExecutionTests.test_provider_mapping) ... ok\ntest_recovery_all_phases_after_restart (test_execution.ExecutionTests.test_recovery_all_phases_after_restart) ... ok\ntest_rule_profiles_and_daily_all_exchanges (test_execution.ExecutionTests.test_rule_profiles_and_daily_all_exchanges) ... ok\ntest_schema_and_business_rejections (test_execution.ExecutionTests.test_schema_and_business_rejections) ... ok\ntest_settlement_and_previous_day_expiry (test_execution.ExecutionTests.test_settlement_and_previous_day_expiry) ... ok\ntest_time_capacity_gap_and_expiry (test_execution.ExecutionTests.test_time_capacity_gap_and_expiry) ... ok\ntest_upper_atomic_equivalence (test_execution.ExecutionTests.test_upper_atomic_equivalence) ... ok\ntest_weight_open_gap_partial_cancel_and_fee (test_execution.ExecutionTests.test_weight_open_gap_partial_cancel_and_fee) ... ok\n\n----------------------------------------------------------------------\nRan 42 tests in 17.489s\n\nOK\n"
+    },
+    {
+      "name": "openspec-strict:stock-execution-tools",
+      "status": "passed",
+      "command": [
+        "D:\\Project\\stock_skills\\.runtime\\node-v22.16.0-win-x64\\node.exe",
+        "D:\\Project\\stock_skills\\.runtime\\openspec\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+        "validate",
+        "stock-execution-tools",
+        "--strict"
+      ],
+      "stdout": "Change 'stock-execution-tools' is valid\n",
+      "stderr": ""
+    },
+    {
+      "name": "openspec-status:stock-execution-tools",
+      "status": "passed",
+      "command": [
+        "D:\\Project\\stock_skills\\.runtime\\node-v22.16.0-win-x64\\node.exe",
+        "D:\\Project\\stock_skills\\.runtime\\openspec\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+        "status",
+        "--change",
+        "stock-execution-tools",
+        "--json"
+      ],
+      "stdout": "{\n  \"changeName\": \"stock-execution-tools\",\n  \"schemaName\": \"spec-driven\",\n  \"planningHome\": {\n    \"kind\": \"repo\",\n    \"root\": \"D:\\\\Project\\\\stock_skills\",\n    \"changesDir\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\",\n    \"defaultSchema\": \"spec-driven\"\n  },\n  \"changeRoot\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\",\n  \"artifactPaths\": {\n    \"proposal\": {\n      \"outputPath\": \"proposal.md\",\n      \"resolvedOutputPath\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\proposal.md\",\n      \"existingOutputPaths\": [\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\proposal.md\"\n      ]\n    },\n    \"specs\": {\n      \"outputPath\": \"specs/**/*.md\",\n      \"resolvedOutputPath\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\specs\\\\**\\\\*.md\",\n      \"existingOutputPaths\": [\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\specs\\\\stock-execution\\\\spec.md\",\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\specs\\\\stock-tool-packaging\\\\spec.md\"\n      ]\n    },\n    \"design\": {\n      \"outputPath\": \"design.md\",\n      \"resolvedOutputPath\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\design.md\",\n      \"existingOutputPaths\": [\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\design.md\"\n      ]\n    },\n    \"tasks\": {\n      \"outputPath\": \"tasks.md\",\n      \"resolvedOutputPath\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\tasks.md\",\n      \"existingOutputPaths\": [\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\stock-execution-tools\\\\tasks.md\"\n      ]\n    }\n  },\n  \"isPlanningComplete\": true,\n  \"isComplete\": true,\n  \"applyRequires\": [\n    \"tasks\"\n  ],\n  \"nextSteps\": [\n    \"All planning artifacts are complete. Run openspec instructions apply --change \\\"stock-execution-tools\\\" --json to inspect implementation progress.\"\n  ],\n  \"actionContext\": {\n    \"mode\": \"repo-local\",\n    \"sourceOfTruth\": \"repo\",\n    \"planningArtifacts\": [\n      \"proposal\",\n      \"specs\",\n      \"design\",\n      \"tasks\"\n    ],\n    \"linkedContext\": [],\n    \"allowedEditRoots\": [\n      \"D:\\\\Project\\\\stock_skills\"\n    ],\n    \"requiresAffectedAreaSelection\": false,\n    \"constraints\": [\n      \"Repo-local change artifacts and implementation edits are scoped to this project.\"\n    ]\n  },\n  \"artifacts\": [\n    {\n      \"id\": \"proposal\",\n      \"outputPath\": \"proposal.md\",\n      \"status\": \"done\",\n      \"requires\": []\n    },\n    {\n      \"id\": \"specs\",\n      \"outputPath\": \"specs/**/*.md\",\n      \"status\": \"done\",\n      \"requires\": [\n        \"proposal\"\n      ]\n    },\n    {\n      \"id\": \"design\",\n      \"outputPath\": \"design.md\",\n      \"status\": \"done\",\n      \"requires\": [\n        \"proposal\"\n      ]\n    },\n    {\n      \"id\": \"tasks\",\n      \"outputPath\": \"tasks.md\",\n      \"status\": \"done\",\n      \"requires\": [\n        \"specs\",\n        \"design\"\n      ]\n    }\n  ],\n  \"root\": {\n    \"path\": \"D:\\\\Project\\\\stock_skills\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "openspec-strict:cta-execution-tools",
+      "status": "passed",
+      "command": [
+        "D:\\Project\\stock_skills\\.runtime\\node-v22.16.0-win-x64\\node.exe",
+        "D:\\Project\\stock_skills\\.runtime\\openspec\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+        "validate",
+        "cta-execution-tools",
+        "--strict"
+      ],
+      "stdout": "Change 'cta-execution-tools' is valid\n",
+      "stderr": ""
+    },
+    {
+      "name": "openspec-status:cta-execution-tools",
+      "status": "passed",
+      "command": [
+        "D:\\Project\\stock_skills\\.runtime\\node-v22.16.0-win-x64\\node.exe",
+        "D:\\Project\\stock_skills\\.runtime\\openspec\\node_modules\\@fission-ai\\openspec\\bin\\openspec.js",
+        "status",
+        "--change",
+        "cta-execution-tools",
+        "--json"
+      ],
+      "stdout": "{\n  \"changeName\": \"cta-execution-tools\",\n  \"schemaName\": \"spec-driven\",\n  \"planningHome\": {\n    \"kind\": \"repo\",\n    \"root\": \"D:\\\\Project\\\\stock_skills\",\n    \"changesDir\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\",\n    \"defaultSchema\": \"spec-driven\"\n  },\n  \"changeRoot\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\",\n  \"artifactPaths\": {\n    \"proposal\": {\n      \"outputPath\": \"proposal.md\",\n      \"resolvedOutputPath\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\proposal.md\",\n      \"existingOutputPaths\": [\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\proposal.md\"\n      ]\n    },\n    \"specs\": {\n      \"outputPath\": \"specs/**/*.md\",\n      \"resolvedOutputPath\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\specs\\\\**\\\\*.md\",\n      \"existingOutputPaths\": [\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\specs\\\\cta-execution\\\\spec.md\",\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\specs\\\\cta-tool-packaging\\\\spec.md\"\n      ]\n    },\n    \"design\": {\n      \"outputPath\": \"design.md\",\n      \"resolvedOutputPath\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\design.md\",\n      \"existingOutputPaths\": [\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\design.md\"\n      ]\n    },\n    \"tasks\": {\n      \"outputPath\": \"tasks.md\",\n      \"resolvedOutputPath\": \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\tasks.md\",\n      \"existingOutputPaths\": [\n        \"D:\\\\Project\\\\stock_skills\\\\openspec\\\\changes\\\\cta-execution-tools\\\\tasks.md\"\n      ]\n    }\n  },\n  \"isPlanningComplete\": true,\n  \"isComplete\": true,\n  \"applyRequires\": [\n    \"tasks\"\n  ],\n  \"nextSteps\": [\n    \"All planning artifacts are complete. Run openspec instructions apply --change \\\"cta-execution-tools\\\" --json to inspect implementation progress.\"\n  ],\n  \"actionContext\": {\n    \"mode\": \"repo-local\",\n    \"sourceOfTruth\": \"repo\",\n    \"planningArtifacts\": [\n      \"proposal\",\n      \"specs\",\n      \"design\",\n      \"tasks\"\n    ],\n    \"linkedContext\": [],\n    \"allowedEditRoots\": [\n      \"D:\\\\Project\\\\stock_skills\"\n    ],\n    \"requiresAffectedAreaSelection\": false,\n    \"constraints\": [\n      \"Repo-local change artifacts and implementation edits are scoped to this project.\"\n    ]\n  },\n  \"artifacts\": [\n    {\n      \"id\": \"proposal\",\n      \"outputPath\": \"proposal.md\",\n      \"status\": \"done\",\n      \"requires\": []\n    },\n    {\n      \"id\": \"specs\",\n      \"outputPath\": \"specs/**/*.md\",\n      \"status\": \"done\",\n      \"requires\": [\n        \"proposal\"\n      ]\n    },\n    {\n      \"id\": \"design\",\n      \"outputPath\": \"design.md\",\n      \"status\": \"done\",\n      \"requires\": [\n        \"proposal\"\n      ]\n    },\n    {\n      \"id\": \"tasks\",\n      \"outputPath\": \"tasks.md\",\n      \"status\": \"done\",\n      \"requires\": [\n        \"specs\",\n        \"design\"\n      ]\n    }\n  ],\n  \"root\": {\n    \"path\": \"D:\\\\Project\\\\stock_skills\",\n    \"source\": \"nearest\"\n  }\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "codex-skill-validation",
+      "status": "passed",
+      "command": [
+        "D:\\Project\\factor_research_tool\\.venv\\Scripts\\python.exe",
+        "scripts/validate_skills.py",
+        "--validator",
+        "C:\\Users\\EDY\\.codex\\skills\\.system\\skill-creator\\scripts\\quick_validate.py"
+      ],
+      "stdout": "Codex skill validation: 45 / 45\n",
+      "stderr": ""
+    }
+  ],
+  "external_checks_not_run": [
+    "real_account_api",
+    "ClickHouse",
+    "official_exchange_rules",
+    "native_platform_export_validator"
+  ]
+}

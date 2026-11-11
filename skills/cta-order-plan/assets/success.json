@@ -1,0 +1,65 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "plan_id": "target1:1:SIM:OLD",
+    "contract_id": "SIM:OLD",
+    "target_net_lots": -2,
+    "leg_ids": [
+      "target1:1:SIM:OLD:leg1",
+      "target1:1:SIM:OLD:leg2"
+    ],
+    "hash": "ecb5d7a80b2b06401ba1db0075c4db19118431cbcc0e905d9c34c8749f0ddaaf",
+    "normalization": {
+      "actual_long_lots": 3,
+      "actual_short_lots": 0,
+      "actual_net_lots": 3,
+      "pending_open_lots": 0,
+      "pending_close_lots": 0,
+      "gap_lots": -5,
+      "conflicting_order_ids": [],
+      "retained_order_ids": []
+    },
+    "commit_status": "COMMITTED",
+    "legs": [
+      {
+        "leg_id": "target1:1:SIM:OLD:leg1",
+        "plan_id": "target1:1:SIM:OLD",
+        "contract_id": "SIM:OLD",
+        "side": "SELL",
+        "offset": "CLOSE_YESTERDAY",
+        "lots": 3,
+        "limit_price": "100",
+        "order_type": "LIMIT",
+        "time_in_force": "DAY",
+        "target_id": "target1",
+        "target_version": 1,
+        "trade_date": "2026-01-05",
+        "dependencies": [],
+        "buffer": "0",
+        "order_id": null
+      },
+      {
+        "leg_id": "target1:1:SIM:OLD:leg2",
+        "plan_id": "target1:1:SIM:OLD",
+        "contract_id": "SIM:OLD",
+        "side": "SELL",
+        "offset": "OPEN",
+        "lots": 2,
+        "limit_price": "100",
+        "order_type": "LIMIT",
+        "time_in_force": "DAY",
+        "target_id": "target1",
+        "target_version": 1,
+        "trade_date": "2026-01-05",
+        "dependencies": [
+          "target1:1:SIM:OLD:leg1"
+        ],
+        "buffer": "0",
+        "order_id": null
+      }
+    ]
+  },
+  "warnings": []
+}

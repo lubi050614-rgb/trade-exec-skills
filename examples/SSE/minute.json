@@ -1,0 +1,19 @@
+{
+  "event_id": "bar-1",
+  "instrument_id": "SSE:SIM0001",
+  "frequency": "1m",
+  "trade_date": "2026-01-05",
+  "start_at": "2026-01-05T09:31:00+08:00",
+  "end_at": "2026-01-05T09:32:00+08:00",
+  "open": "10",
+  "high": "10.1",
+  "low": "9.9",
+  "close": "10",
+  "volume": 3000,
+  "amount": "30000",
+  "tradable": true,
+  "price_limit_clear": true,
+  "price_basis": "UNADJUSTED",
+  "source": "synthetic",
+  "synthetic": true
+}

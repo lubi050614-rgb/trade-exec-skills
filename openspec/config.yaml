@@ -1,0 +1,14 @@
+schema: spec-driven
+context: |
+  Python 3.11+ deterministic stock and domestic futures simulation plugin.
+  Baseline: execution_tools_ai_spec.md version 0.2.0.
+  Scope: stock 6 Upper + 15 Atomic; CTA 8 Upper + 16 Atomic; 45 independent tools.
+  Separate asset domains and explicit FUTURES routing; persisted close-before-open dependencies.
+  No live broker, production account service, ClickHouse or official exchange rule certification.
+  Decimal strings, SQLite durability, authoritative mock account adapter.
+  Verify using: python -m unittest discover -s tests -v
+rules:
+  specs:
+    - Each requirement SHALL have at least one GIVEN/WHEN/THEN scenario.
+  tasks:
+    - Record actual verification evidence; never mark unavailable checks passed.

@@ -1,0 +1,31 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-apply-fill",
+  "data": {
+    "instrument_id": "SSE:SIM0001",
+    "side": "BUY",
+    "quantity": 600,
+    "order_type": "LIMIT",
+    "limit_price": "10",
+    "time_in_force": "DAY",
+    "submitted_at": "2026-01-05T09:31:00+08:00",
+    "target_id": "target-1",
+    "target_version": 1,
+    "account_version": 1,
+    "order_id": "o-1",
+    "client_order_id": "client-1",
+    "status": "PARTIALLY_FILLED",
+    "version": 3,
+    "filled_quantity": 300,
+    "leaves_quantity": 300,
+    "canceled_quantity": 0,
+    "reserved_cash": "6005.00",
+    "reserved_quantity": 0,
+    "notional": "3000.00",
+    "charged_fee": "5.00",
+    "cancel_pending": false,
+    "average_price": "10.00"
+  },
+  "warnings": []
+}

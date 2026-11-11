@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-target-gap",
+  "data": {
+    "gap": 400,
+    "side": "BUY",
+    "quantity": 400
+  },
+  "warnings": []
+}

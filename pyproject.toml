@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stock-execution-tools"
+version = "0.2.0"
+description = "45 deterministic stock and futures simulation tools"
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.setuptools.packages.find]
+include = ["stock_execution*", "cta_execution*", "execution_common*"]
+
+[tool.setuptools.package-data]
+stock_execution = ["contracts.json"]
+cta_execution = ["contracts.json"]

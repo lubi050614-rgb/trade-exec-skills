@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-execution-fill-record",
+  "account_id": "mock-SSE",
+  "simulation_id": "does-not-exist",
+  "data": {
+    "order_id": "o-1",
+    "fill_id": "bar-1:o-1",
+    "event_id": "bar-1",
+    "expected_version": 2
+  },
+  "idempotency_key": "example-1"
+}

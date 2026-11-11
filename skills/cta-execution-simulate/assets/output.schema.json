@@ -1,0 +1,314 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "commit_status": {
+                  "type": "string"
+                },
+                "completed_steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "failed_step": {
+                  "type": "null"
+                },
+                "retryable": {
+                  "type": "boolean"
+                },
+                "event_id": {
+                  "type": "string"
+                },
+                "reconciliation_status": {
+                  "type": "string"
+                },
+                "fills": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "fill_id": {
+                        "type": "string"
+                      },
+                      "order_id": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "contract_id": {
+                        "type": "string"
+                      },
+                      "side": {
+                        "type": "string"
+                      },
+                      "offset": {
+                        "type": "string"
+                      },
+                      "lots": {
+                        "type": "integer"
+                      },
+                      "price": {
+                        "type": "string"
+                      },
+                      "notional": {
+                        "type": "string"
+                      },
+                      "fee": {
+                        "type": "string"
+                      },
+                      "reserved_consumption": {
+                        "type": "string"
+                      },
+                      "executed_at": {
+                        "type": "string"
+                      },
+                      "trade_date": {
+                        "type": "string"
+                      },
+                      "market_event_id": {
+                        "type": "string"
+                      },
+                      "model_version": {
+                        "type": "string"
+                      },
+                      "accounting_status": {
+                        "type": "string"
+                      },
+                      "order_applied": {
+                        "type": "boolean"
+                      },
+                      "realized_pnl": {
+                        "type": "string"
+                      },
+                      "source_hash": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "fill_id",
+                      "order_id",
+                      "contract_id",
+                      "side",
+                      "offset",
+                      "lots",
+                      "price",
+                      "notional",
+                      "fee",
+                      "reserved_consumption",
+                      "executed_at",
+                      "trade_date",
+                      "market_event_id",
+                      "model_version",
+                      "accounting_status",
+                      "order_applied",
+                      "realized_pnl",
+                      "source_hash"
+                    ],
+                    "additionalProperties": true
+                  }
+                },
+                "account": {
+                  "type": "object",
+                  "properties": {
+                    "account_id": {
+                      "type": "string"
+                    },
+                    "asset_class": {
+                      "type": "string"
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "balance": {
+                      "type": "string"
+                    },
+                    "as_of": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "integer"
+                    },
+                    "equity": {
+                      "type": "string"
+                    },
+                    "floating_pnl": {
+                      "type": "string"
+                    },
+                    "position_margin": {
+                      "type": "string"
+                    },
+                    "frozen_cash": {
+                      "type": "string"
+                    },
+                    "available_cash": {
+                      "type": "string"
+                    },
+                    "margin_shortfall": {
+                      "type": "string"
+                    },
+                    "risk_status": {
+                      "type": "string"
+                    },
+                    "positions": {
+                      "type": "object",
+                      "additionalProperties": {}
+                    },
+                    "trade_date": {
+                      "type": "string"
+                    },
+                    "reconciliation_status": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "account_id",
+                    "asset_class",
+                    "currency",
+                    "balance",
+                    "as_of",
+                    "version",
+                    "equity",
+                    "floating_pnl",
+                    "position_margin",
+                    "frozen_cash",
+                    "available_cash",
+                    "margin_shortfall",
+                    "risk_status",
+                    "positions",
+                    "trade_date",
+                    "reconciliation_status"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "required": [
+                "commit_status",
+                "completed_steps",
+                "failed_step",
+                "retryable",
+                "event_id",
+                "reconciliation_status",
+                "fills",
+                "account"
+              ],
+              "additionalProperties": true
+            },
+            {
+              "type": "object",
+              "properties": {
+                "commit_status": {
+                  "enum": [
+                    "ACCOUNTING_PENDING",
+                    "RECOVERY_REQUIRED"
+                  ]
+                },
+                "completed_steps": {
+                  "type": "array"
+                },
+                "failed_step": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "retryable": {
+                  "const": true
+                },
+                "event_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reconciliation_status": {
+                  "const": "PENDING"
+                }
+              },
+              "required": [
+                "commit_status",
+                "completed_steps",
+                "failed_step",
+                "retryable",
+                "event_id",
+                "reconciliation_status"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "warnings": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "data",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "retryable",
+            "details"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

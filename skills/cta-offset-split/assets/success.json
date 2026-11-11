@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "legs": [
+      {
+        "side": "SELL",
+        "offset": "CLOSE_YESTERDAY",
+        "lots": 3,
+        "bucket": "YESTERDAY",
+        "depends_on_close": true
+      },
+      {
+        "side": "SELL",
+        "offset": "OPEN",
+        "lots": 2,
+        "depends_on_close": true
+      }
+    ],
+    "strategy": "CLOSE_THEN_OPEN"
+  },
+  "warnings": []
+}

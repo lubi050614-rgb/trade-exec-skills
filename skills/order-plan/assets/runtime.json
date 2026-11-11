@@ -1,0 +1,7 @@
+{
+  "python": ">=3.11",
+  "dependencies": [],
+  "mode": "simulation_only",
+  "database": "SQLite",
+  "core": "bundled scripts/stock_execution"
+}

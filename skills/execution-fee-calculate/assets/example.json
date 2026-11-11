@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-execution-fee-calculate",
+  "account_id": "mock-SSE",
+  "simulation_id": "demo-SSE",
+  "data": {
+    "side": "BUY",
+    "notional": "3000",
+    "cumulative_notional": "0",
+    "charged_fee": "0"
+  },
+  "idempotency_key": "plan-1"
+}

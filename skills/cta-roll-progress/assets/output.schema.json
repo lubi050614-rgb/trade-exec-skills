@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "roll_id": {
+              "type": "string"
+            },
+            "closed_old_lots": {
+              "type": "integer"
+            },
+            "opened_new_lots": {
+              "type": "integer"
+            },
+            "remaining_old_lots": {
+              "type": "integer"
+            },
+            "remaining_new_lots": {
+              "type": "integer"
+            },
+            "unconnected_lots": {
+              "type": "integer"
+            },
+            "complete": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "roll_id",
+            "closed_old_lots",
+            "opened_new_lots",
+            "remaining_old_lots",
+            "remaining_new_lots",
+            "unconnected_lots",
+            "complete"
+          ],
+          "additionalProperties": true
+        },
+        "warnings": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "data",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "retryable",
+            "details"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

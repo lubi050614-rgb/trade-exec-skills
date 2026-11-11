@@ -1,0 +1,43 @@
+{
+  "review_date": "2026-11-11",
+  "timezone": "Asia/Shanghai",
+  "files": [
+    {
+      "path": "reviews/2026-11-11-business-logic/inputs/decision-table-test-v1.md",
+      "sha256": "daf17b782a4e078a59f6fe9f41743862c49247c9f0c6badbfb9f9091c355e229",
+      "bytes": 34961
+    },
+    {
+      "path": "execution_tools_ai_spec.md",
+      "sha256": "944b1d6d979f00c94822095c61effe7817386356db3048283ad9b5a0e058d419",
+      "bytes": 36016
+    },
+    {
+      "path": "stock_execution/engine.py",
+      "sha256": "1a3a90ceea41a609e14f6c0eb50e3c7ffca3569be1ed56c04d5fbce401af7775",
+      "bytes": 35245
+    },
+    {
+      "path": "cta_execution/engine.py",
+      "sha256": "f18af7d12a4cc4e26a72fa60baee6f815887ed4495cd3e8f8ef4de34e0bf0e1f",
+      "bytes": 43248
+    },
+    {
+      "path": "cta_execution/contracts.py",
+      "sha256": "b49f358c8fe904365d148e98ad7468919d6f5b4da2902cf8c1abb8ec4aaa3835",
+      "bytes": 3396
+    },
+    {
+      "path": "skills/execution-simulate/scripts/stock_execution/engine.py",
+      "sha256": "1a3a90ceea41a609e14f6c0eb50e3c7ffca3569be1ed56c04d5fbce401af7775",
+      "bytes": 35245
+    },
+    {
+      "path": "skills/cta-execution-simulate/scripts/cta_execution/engine.py",
+      "sha256": "f18af7d12a4cc4e26a72fa60baee6f815887ed4495cd3e8f8ef4de34e0bf0e1f",
+      "bytes": 43248
+    }
+  ],
+  "decision_source": "C:/Users/EDY/Desktop/quantdocs/A股与CTA_交易决策表及逐事件验收案例_2026-11-11.md",
+  "scope": "Provided test-v1 business policy; no independent legal/source verification"
+}

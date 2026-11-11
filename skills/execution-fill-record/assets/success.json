@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-execution-fill-record",
+  "data": {
+    "fill_id": "bar-1:o-1",
+    "order_id": "o-1",
+    "quantity": 300,
+    "price": "10",
+    "notional": "3000.00",
+    "fees": "5.00",
+    "executed_at": "2026-01-05T09:32:00+08:00",
+    "market_event_id": "bar-1",
+    "model_version": "open-conservative-v1",
+    "accounting_status": "ACCOUNTING_PENDING",
+    "order_applied": false,
+    "source_hash": "e29ac7c42719255387dc7b8149c6a3776105c7dacd34efcc3a741a57f20a0995"
+  },
+  "warnings": []
+}

@@ -1,0 +1,19 @@
+{
+  "event_id": "day-1",
+  "instrument_id": "BSE:SIM0001",
+  "frequency": "1d",
+  "trade_date": "2026-01-06",
+  "start_at": "2026-01-06T09:30:00+08:00",
+  "end_at": "2026-01-06T15:00:00+08:00",
+  "open": "10",
+  "high": "10.1",
+  "low": "9.9",
+  "close": "10",
+  "volume": 3000,
+  "amount": "30000",
+  "tradable": true,
+  "price_limit_clear": true,
+  "price_basis": "UNADJUSTED",
+  "source": "synthetic",
+  "synthetic": true
+}

@@ -1,0 +1,90 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "simulation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "account_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_class": {
+      "const": "FUTURES"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "roll_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "old_contract_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "new_contract_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lots": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "old_reference_price": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        },
+        "new_reference_price": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        },
+        "account_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "as_of": {
+          "type": "string",
+          "minLength": 1
+        },
+        "buffer": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        }
+      },
+      "required": [
+        "roll_id",
+        "old_contract_id",
+        "new_contract_id",
+        "lots",
+        "old_reference_price",
+        "new_reference_price",
+        "account_version",
+        "as_of"
+      ],
+      "additionalProperties": false
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "simulation_id",
+    "account_id",
+    "asset_class",
+    "data",
+    "idempotency_key"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

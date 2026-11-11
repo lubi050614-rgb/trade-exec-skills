@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-precheck",
+  "data": {
+    "required_cash": "6005.00",
+    "required_quantity": 0,
+    "fee": "5.00",
+    "account_version": 1
+  },
+  "warnings": []
+}

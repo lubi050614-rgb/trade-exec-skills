@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "fill_id": "f1",
+    "order_id": "cta-o1",
+    "contract_id": "SIM:OLD",
+    "side": "SELL",
+    "offset": "CLOSE_YESTERDAY",
+    "lots": 2,
+    "price": "100",
+    "notional": "2000",
+    "fee": "2",
+    "reserved_consumption": "2",
+    "executed_at": "2026-01-05T09:02:00+08:00",
+    "trade_date": "2026-01-05",
+    "market_event_id": "cta-bar1",
+    "model_version": "cta-open-v1",
+    "accounting_status": "ACCOUNTING_PENDING",
+    "order_applied": false,
+    "realized_pnl": "0",
+    "source_hash": "ddb40ac145e828011a698d6b766bcc858925ff8ee343aeb6a011d2eb07deed3b"
+  },
+  "warnings": []
+}

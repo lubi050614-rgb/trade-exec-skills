@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-register",
+  "data": {
+    "instrument_id": "SSE:SIM0001",
+    "side": "BUY",
+    "quantity": 600,
+    "order_type": "LIMIT",
+    "limit_price": "10",
+    "time_in_force": "DAY",
+    "submitted_at": "2026-01-05T09:31:00+08:00",
+    "target_id": "target-1",
+    "target_version": 1,
+    "account_version": 1,
+    "order_id": "o-1",
+    "client_order_id": "client-1",
+    "status": "PENDING_RESERVATION",
+    "version": 1,
+    "filled_quantity": 0,
+    "leaves_quantity": 600,
+    "canceled_quantity": 0,
+    "reserved_cash": "0",
+    "reserved_quantity": 0,
+    "notional": "0",
+    "charged_fee": "0",
+    "cancel_pending": false
+  },
+  "warnings": []
+}

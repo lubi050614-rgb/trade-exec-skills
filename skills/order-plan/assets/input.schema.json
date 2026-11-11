@@ -1,0 +1,115 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "account_id": {
+      "type": "string"
+    },
+    "simulation_id": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "account_snapshot_id": {
+          "type": "string"
+        },
+        "as_of": {
+          "type": "string"
+        },
+        "total_assets": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        },
+        "coverage": {
+          "const": "FULL"
+        },
+        "target_id": {
+          "type": "string"
+        },
+        "target_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "instrument_id": {
+                "type": "string"
+              },
+              "target_weight": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "current_weight": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "reference_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "price_basis": {
+                "const": "UNADJUSTED"
+              },
+              "price_as_of": {
+                "type": "string"
+              },
+              "price_source": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "instrument_id",
+              "target_weight",
+              "current_weight",
+              "reference_price",
+              "price_basis",
+              "price_as_of",
+              "price_source"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "weight_tolerance": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        },
+        "cash_buffer": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        }
+      },
+      "required": [
+        "account_snapshot_id",
+        "as_of",
+        "total_assets",
+        "coverage",
+        "target_id",
+        "target_version",
+        "targets"
+      ],
+      "additionalProperties": false
+    },
+    "idempotency_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "account_id",
+    "simulation_id",
+    "data",
+    "idempotency_key"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

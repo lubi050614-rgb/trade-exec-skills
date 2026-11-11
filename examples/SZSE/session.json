@@ -1,0 +1,53 @@
+{
+  "simulation_id": "demo-SZSE",
+  "frequency": "1m",
+  "account": {
+    "account_id": "mock-SZSE",
+    "currency": "CNY",
+    "cash_balance": "96000",
+    "as_of": "2026-01-05T09:31:00+08:00",
+    "version": 1,
+    "positions": {
+      "SZSE:SIM0001": {
+        "quantity": 400,
+        "settled_quantity": 400,
+        "valuation_price": "10",
+        "exchange": "SZSE",
+        "board": "SIM_GROWTH",
+        "unsettled": []
+      }
+    }
+  },
+  "rules": {
+    "SZSE:SIM0001": {
+      "profile_id": "simulation_fixture",
+      "version": "1",
+      "exchange": "SZSE",
+      "board": "SIM_GROWTH",
+      "instrument_type": "STOCK",
+      "price_tick": "0.01",
+      "buy_min": 200,
+      "buy_step": 100,
+      "sell_step": 100,
+      "odd_lot_liquidation": true,
+      "lower_price": "1",
+      "upper_price": "100",
+      "sessions": [
+        [
+          "09:30",
+          "11:30"
+        ],
+        [
+          "13:00",
+          "15:00"
+        ]
+      ],
+      "trade_dates": [
+        "2026-01-05",
+        "2026-01-06"
+      ],
+      "settlement": "T+1",
+      "disclaimer": "Synthetic rules; not official exchange rules"
+    }
+  }
+}

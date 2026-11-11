@@ -1,0 +1,35 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-account-apply-fill",
+  "data": {
+    "account_id": "mock-SSE",
+    "currency": "CNY",
+    "cash_balance": "92995.00",
+    "as_of": "2026-01-05T09:32:00+08:00",
+    "version": 3,
+    "positions": {
+      "SSE:SIM0001": {
+        "quantity": 700,
+        "settled_quantity": 400,
+        "valuation_price": "10",
+        "exchange": "SSE",
+        "board": "SIM_MAIN",
+        "unsettled": [
+          {
+            "quantity": 300,
+            "trade_date": "2026-01-05"
+          }
+        ],
+        "frozen_sell_quantity": 0,
+        "sellable_quantity": 400
+      }
+    },
+    "frozen_cash": "3000.00",
+    "available_cash": "89995.00",
+    "total_assets": "99995.00",
+    "snapshot_id": "3",
+    "reconciliation_status": "CONSISTENT"
+  },
+  "warnings": []
+}

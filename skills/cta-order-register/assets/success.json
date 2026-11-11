@@ -1,0 +1,88 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "order": {
+      "leg_id": "target1:1:SIM:OLD:leg1",
+      "plan_id": "target1:1:SIM:OLD",
+      "contract_id": "SIM:OLD",
+      "side": "SELL",
+      "offset": "CLOSE_YESTERDAY",
+      "lots": 3,
+      "limit_price": "100",
+      "order_type": "LIMIT",
+      "time_in_force": "DAY",
+      "target_id": "target1",
+      "target_version": 1,
+      "trade_date": "2026-01-05",
+      "dependencies": [],
+      "buffer": "0",
+      "order_id": "cta-o1",
+      "submitted_at": "2026-01-05T09:01:00+08:00",
+      "account_version": 1,
+      "client_order_id": "client1",
+      "sequence": 1,
+      "status": "NEW",
+      "version": 1,
+      "original_lots": 3,
+      "filled_lots": 0,
+      "leaves_lots": 3,
+      "canceled_lots": 0,
+      "reserved_cash": "3",
+      "claims": [
+        {
+          "lot_id": "initial",
+          "quantity": 3,
+          "bucket": "YESTERDAY"
+        }
+      ],
+      "charged_fee": "0",
+      "notional": "0",
+      "release_pending": false,
+      "cancel_pending": false
+    },
+    "account": {
+      "account_id": "mock-futures",
+      "asset_class": "FUTURES",
+      "currency": "CNY",
+      "balance": "100000",
+      "as_of": "2026-01-05T09:01:00+08:00",
+      "version": 2,
+      "equity": "100000",
+      "floating_pnl": "0",
+      "position_margin": "300.00",
+      "frozen_cash": "3",
+      "available_cash": "99697.00",
+      "margin_shortfall": "0",
+      "risk_status": "NORMAL",
+      "positions": {
+        "SIM:OLD": {
+          "long_today": 0,
+          "long_yesterday": 3,
+          "short_today": 0,
+          "short_yesterday": 0,
+          "available_long_today": 0,
+          "available_long_yesterday": 0,
+          "available_short_today": 0,
+          "available_short_yesterday": 0,
+          "net_lots": 3,
+          "lots": [
+            {
+              "lot_id": "initial",
+              "side": "LONG",
+              "bucket": "YESTERDAY",
+              "quantity": 3,
+              "basis_price": "100",
+              "opened_trade_date": "2026-01-02"
+            }
+          ]
+        }
+      },
+      "trade_date": "2026-01-05",
+      "reconciliation_status": "CONSISTENT"
+    },
+    "commit_status": "COMMITTED"
+  },
+  "warnings": []
+}
