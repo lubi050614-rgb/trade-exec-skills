@@ -7,6 +7,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from stock_execution.engine import TOOLS, WRITES
+from scripts.stock_upper_skills import UPPER, metadata, instructions
 
 
 def write(path,value):
@@ -148,7 +149,7 @@ def main():
         response=dict(**{'$schema':'https://json-schema.org/draft/2020-12/schema'},oneOf=[obj(dict(ok={'const':True},schema_version={'const':'1.0'},request_id=S,data={'type':'object'},warnings={'type':'array','items':S})),obj(dict(ok={'const':False},schema_version={'const':'1.0'},request_id=S,error=obj(dict(code=S,message=S,retryable={'type':'boolean'},details={'type':'object'}))))])
         example=dict(base,data=samples[tool],request_id='example-'+tool)
         if tool in WRITES: example['idempotency_key']='example-1'
-        catalog[tool]=dict(layer='Upper' if tool in FLOW else 'Atomic',write=tool in WRITES,fields=list(FIELDS[tool]))
+        catalog[tool]=dict(layer='Upper' if tool in FLOW else 'Atomic',write=tool in WRITES,fields=list(FIELDS[tool]),**metadata(tool))
         write(folder/'assets/input.schema.json',request); write(folder/'assets/output.schema.json',response)
         write(folder/'assets/example.json',example)
         write(folder/'assets/failure.json',dict(ok=False,schema_version='1.0',request_id=example['request_id'],error=dict(code='UNKNOWN_SIMULATION',message='UNKNOWN_SIMULATION',retryable=False,details={})))
@@ -157,8 +158,8 @@ def main():
         write(folder/'scripts/engine.py',f'from stock_execution.cli import run\n\ndef execute():\n    return run({tool!r})\n')
         write(folder/'SKILL.md',f'''---
 name: {tool}
-description: Execute the {tool} stock simulation interface using explicit JSON inputs and a persistent mock session.
-when_to_use: Explicit {tool} requests for simulated stock execution.
+description: {UPPER[tool][1]+'。'+UPPER[tool][3] if tool in UPPER else 'Execute the '+tool+' stock simulation interface using explicit JSON inputs and a persistent mock session.'}
+when_to_use: {UPPER[tool][1]+'，用于股票模拟执行。' if tool in UPPER else 'Explicit '+tool+' requests for simulated stock execution.'}
 version: 0.1.0
 entry: scripts/run.py
 allowed_tools:
@@ -170,7 +171,8 @@ Use this independent {catalog[tool]['layer']} interface for `{tool}`. Read [cont
 Call `skill_run_script` with `scripts/run.py` and arguments `--db simulation.sqlite --input assets/example.json`. For a fresh session add `--init <session.json>` using an exchange fixture from the plugin examples. Run via Python directly with the same arguments when skill_run_script is unavailable.
 
 Stdout is one JSON envelope. Exit 0 means transport/domain success, 1 means an error envelope; inspect `commit_status` for pending recovery. The database path must be shared by related calls. Never substitute real account credentials or infer a production rule profile.
-''')
+{instructions(tool) if tool in UPPER else '## '+metadata(tool)['id']+'\n\n层级：Atomic。编号仅用于说明对应关系；Agent 调用必须使用完整工具名 `'+tool+'`。'}
+'''.rstrip()+'\n')
         duty,exclusion=RESPONSIBILITIES[tool]
         write(folder/'references/contract.md',f'''# {tool}
 
@@ -183,6 +185,10 @@ Inputs are defined by [input schema](../assets/input.schema.json); outputs by [o
 {'Persistent writes require idempotency_key. Same key and payload return the previous result; changed payload returns IDEMPOTENCY_CONFLICT.' if tool in WRITES else 'Read/calculation interface: does not mutate account, orders, fills or reservations.'}
 
 {'Sequence: '+FLOW[tool]+'. Upper reuses the same domain functions as independently invoked Atomic tools.' if tool in FLOW else 'Single domain step only. Does not call an Upper workflow.'}
+
+{('Business mapping: '+metadata(tool)['id']+' → '+', '.join(metadata(tool)['atomic_ids'])+'. Includes indirect fee calculations and order reads; the sequence above lists the main pipeline.') if tool in UPPER else 'Atomic identifier: '+metadata(tool)['id']+'.'}
+
+Identifiers are documentation labels only. Invoke this tool by its full name `{tool}`.
 
 Preconditions: initialized simulation/account; configured fixture instrument; current order/account versions for applicable writes; persisted market event before recording fills; persisted fill before order/account application. Order registration remains PENDING_RESERVATION until reserve succeeds. Direct Atomic cancel must be followed by release. A pending fill blocks new plans, submissions and cancellation until order application and booking recover.
 
@@ -204,6 +210,7 @@ Errors include INVALID_REQUEST, IDEMPOTENCY_CONFLICT, STALE_ORDER_VERSION, STALE
         shape=result_schema(success['data'])
         if tool=='order-cancel':
             shape['properties']['release']={'anyOf':[shape['properties']['release'],{'type':'null'}]}
+            shape['required'].remove('canceled_quantity')  # REQUEST/REJECT do not cancel leaves.
         if tool=='execution-match':
             shape={'anyOf':[shape,obj(dict(quantity={'const':0},reason=S))]}
         if tool=='execution-simulate':

@@ -27,6 +27,7 @@
       "charged_fee": "0",
       "cancel_pending": false
     },
+    "canceled_quantity": 600,
     "release": {
       "released_cash": "6005.00",
       "remaining_cash": "0.00",

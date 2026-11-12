@@ -8,6 +8,7 @@ ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from cta_execution.engine import Runtime, TOOLS, UPPER, WRITES
 from cta_execution.contracts import schemas, obj, S
+from scripts.cta_tool_layers import metadata, annotation
 
 
 def write(path,value):
@@ -161,7 +162,7 @@ def main():
         write(folder/'scripts/run.py','from pathlib import Path\nimport sys\nsys.path.insert(0,str(Path(__file__).resolve().parent))\nfrom engine import execute\n\nif __name__=="__main__":\n    raise SystemExit(execute())\n')
         write(folder/'scripts/engine.py',f'from cta_execution.cli import run\n\ndef execute():\n    return run({tool!r})\n')
         for package in ('cta_execution','execution_common'): shutil.copytree(ROOT/package,folder/'scripts'/package,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__'))
-        layer='Upper' if tool in UPPER else 'Atomic'; catalog[tool]=dict(layer=layer,write=tool in WRITES,asset_class='FUTURES',description=DESCRIPTIONS[tool])
+        layer='Upper' if tool in UPPER else 'Atomic'; catalog[tool]=dict(layer=layer,write=tool in WRITES,asset_class='FUTURES',description=DESCRIPTIONS[tool],**metadata(tool))
         write(folder/'SKILL.md',f'''---
 name: {tool}
 description: {DESCRIPTIONS[tool]} Futures simulation only; never route stock weights here.
@@ -177,10 +178,14 @@ This {layer} tool requires `asset_class=FUTURES`, an explicit account/simulation
 Invoke `skill_run_script` with `scripts/run.py` and `--db cta.sqlite --input assets/example.json`. Direct Python accepts the same arguments; stdout is JSON and exit code is 0 for an envelope with ok=true, 1 for an error. A pending commit_status still requires recovery.
 
 For a fresh planning session, add `--init <session.json>`. For other examples, reproduce the prerequisite state using the project replay script and assets/prepared-state.json. Never copy resources from sibling skills implicitly. Core dependencies are bundled within scripts/.
-''')
+
+{annotation(tool)}
+'''.rstrip()+'\n')
         write(folder/'references/contract.md',f'''# {tool}
 
 Responsibility: {DESCRIPTIONS[tool]} Layer: {layer}. This interface does not connect to a live broker, use stock weight semantics or assume official exchange rules.
+
+{annotation(tool)}
 
 Business invariants: targets keep their normalized quantity for the same version; newer CTA targets supersede earlier unsubmitted legs. Stock order-plan persists normalization and requires an idempotency key. Cancel action REQUEST preserves live leaves and resources, REJECT clears only cancel_pending, CONFIRM cancels the remaining leaves and releases after bookkeeping. Omitted action retains the legacy synchronous mock confirmation. Use REQUEST explicitly for asynchronous simulations. Fill conflicts persist RECONCILE and block new submissions; valid recorded fills and queries remain available. Clearing RECONCILE requires the trusted runtime resolve_reconciliation boundary with independent evidence and CAS checks, not an agent tool. CTA reservation_policy defaults to UPPER_BOUND_V1; ORDER_PRICE_V1 is an explicit fixture policy, and fills exceeding the reserved budget (including retained leaves) do not match. These are local simulation contracts, not live broker callbacks.
 

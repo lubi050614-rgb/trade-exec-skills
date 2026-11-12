@@ -43,9 +43,10 @@ def main():
         source=(target/'SKILL.md').read_text(encoding='utf-8')
         body=re.split(r'^---\s*$',source,flags=re.M)[2]
         domain='futures' if tool in CTA_TOOLS else 'stock'
+        description=re.search(r'^description: (.+)$',source,re.M).group(1)
         metadata=f'''---
 name: {tool}
-description: Execute the {tool} {domain} simulation interface using explicit JSON inputs and a persistent mock session.
+description: {description}
 allowed-tools:
   - skill_run_script
 metadata:

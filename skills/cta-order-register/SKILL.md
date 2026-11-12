@@ -13,3 +13,7 @@ This Atomic tool requires `asset_class=FUTURES`, an explicit account/simulation 
 Invoke `skill_run_script` with `scripts/run.py` and `--db cta.sqlite --input assets/example.json`. Direct Python accepts the same arguments; stdout is JSON and exit code is 0 for an envelope with ok=true, 1 for an error. A pending commit_status still requires recovery.
 
 For a fresh planning session, add `--init <session.json>`. For other examples, reproduce the prerequisite state using the project replay script and assets/prepared-state.json. Never copy resources from sibling skills implicitly. Core dependencies are bundled within scripts/.
+
+## CTA-A8 登记并冻结
+
+层级：Atomic。负责单个领域步骤。编号仅用于说明对应关系；Agent 调用必须使用完整工具名 `cta-order-register`。

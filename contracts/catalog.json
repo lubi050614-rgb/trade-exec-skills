@@ -12,6 +12,17 @@
       "targets",
       "weight_tolerance",
       "cash_buffer"
+    ],
+    "id": "STOCK-U1",
+    "title": "生成订单草稿",
+    "description": "输入完整目标权重、当前账户快照和参考价；读取当前持仓与已有挂单，计算每只股票还需买卖多少股。",
+    "atomic_ids": [
+      "STOCK-A1",
+      "STOCK-A2"
+    ],
+    "atomic_tools": [
+      "order-open-quantity",
+      "order-target-gap"
     ]
   },
   "order-precheck": {
@@ -19,6 +30,19 @@
     "write": false,
     "fields": [
       "order"
+    ],
+    "id": "STOCK-U2",
+    "title": "下单前检查",
+    "description": "输入订单草稿，读取当前账户，检查委托规则、预计费用、可用资金和可卖股数。",
+    "atomic_ids": [
+      "STOCK-A3",
+      "STOCK-A4",
+      "STOCK-A5"
+    ],
+    "atomic_tools": [
+      "order-rule-check",
+      "execution-fee-calculate",
+      "order-resource-check"
     ]
   },
   "order-submit": {
@@ -27,6 +51,23 @@
     "fields": [
       "order",
       "client_order_id"
+    ],
+    "id": "STOCK-U3",
+    "title": "提交订单",
+    "description": "接收订单草稿，重新校验当时可用资源，登记订单并占用资金或股票；重复请求返回原结果。",
+    "atomic_ids": [
+      "STOCK-A3",
+      "STOCK-A4",
+      "STOCK-A5",
+      "STOCK-A6",
+      "STOCK-A7"
+    ],
+    "atomic_tools": [
+      "order-rule-check",
+      "execution-fee-calculate",
+      "order-resource-check",
+      "order-register",
+      "order-reserve"
     ]
   },
   "order-cancel": {
@@ -36,6 +77,19 @@
       "order_id",
       "expected_version",
       "action"
+    ],
+    "id": "STOCK-U4",
+    "title": "撤销余单",
+    "description": "输入订单号及预期版本，撤销尚未成交部分并释放相应资源，保留既有成交。",
+    "atomic_ids": [
+      "STOCK-A8",
+      "STOCK-A9",
+      "STOCK-A10"
+    ],
+    "atomic_tools": [
+      "order-state-read",
+      "order-cancel-remainder",
+      "order-release-reserve"
     ]
   },
   "execution-simulate": {
@@ -48,6 +102,27 @@
       "slippage",
       "end_of_day",
       "fail_after"
+    ],
+    "id": "STOCK-U5",
+    "title": "模拟成交并记账",
+    "description": "输入已完成行情，读取活动订单，按撮合规则计算价格、数量和费用，记录成交并更新订单、现金和持仓。",
+    "atomic_ids": [
+      "STOCK-A4",
+      "STOCK-A8",
+      "STOCK-A10",
+      "STOCK-A11",
+      "STOCK-A12",
+      "STOCK-A13",
+      "STOCK-A14"
+    ],
+    "atomic_tools": [
+      "execution-fee-calculate",
+      "order-state-read",
+      "order-release-reserve",
+      "execution-match",
+      "execution-fill-record",
+      "order-apply-fill",
+      "account-apply-fill"
     ]
   },
   "order-query": {
@@ -57,6 +132,17 @@
       "order_id",
       "offset",
       "limit"
+    ],
+    "id": "STOCK-U6",
+    "title": "查询订单与成交",
+    "description": "输入订单号，返回委托量、已成交量、已撤数量、仍在挂单的数量和逐笔成交明细。",
+    "atomic_ids": [
+      "STOCK-A8",
+      "STOCK-A15"
+    ],
+    "atomic_tools": [
+      "order-state-read",
+      "execution-fill-list"
     ]
   },
   "order-open-quantity": {
@@ -64,7 +150,8 @@
     "write": false,
     "fields": [
       "instrument_id"
-    ]
+    ],
+    "id": "STOCK-A1"
   },
   "order-target-gap": {
     "layer": "Atomic",
@@ -74,14 +161,16 @@
       "actual_quantity",
       "buy_quantity",
       "sell_quantity"
-    ]
+    ],
+    "id": "STOCK-A2"
   },
   "order-rule-check": {
     "layer": "Atomic",
     "write": false,
     "fields": [
       "order"
-    ]
+    ],
+    "id": "STOCK-A3"
   },
   "execution-fee-calculate": {
     "layer": "Atomic",
@@ -91,14 +180,16 @@
       "notional",
       "cumulative_notional",
       "charged_fee"
-    ]
+    ],
+    "id": "STOCK-A4"
   },
   "order-resource-check": {
     "layer": "Atomic",
     "write": false,
     "fields": [
       "order"
-    ]
+    ],
+    "id": "STOCK-A5"
   },
   "order-register": {
     "layer": "Atomic",
@@ -106,7 +197,8 @@
     "fields": [
       "order",
       "client_order_id"
-    ]
+    ],
+    "id": "STOCK-A6"
   },
   "order-reserve": {
     "layer": "Atomic",
@@ -115,14 +207,16 @@
       "order_id",
       "expected_version",
       "account_version"
-    ]
+    ],
+    "id": "STOCK-A7"
   },
   "order-state-read": {
     "layer": "Atomic",
     "write": false,
     "fields": [
       "order_id"
-    ]
+    ],
+    "id": "STOCK-A8"
   },
   "order-cancel-remainder": {
     "layer": "Atomic",
@@ -130,7 +224,8 @@
     "fields": [
       "order_id",
       "expected_version"
-    ]
+    ],
+    "id": "STOCK-A9"
   },
   "order-release-reserve": {
     "layer": "Atomic",
@@ -138,7 +233,8 @@
     "fields": [
       "order_id",
       "expected_version"
-    ]
+    ],
+    "id": "STOCK-A10"
   },
   "execution-match": {
     "layer": "Atomic",
@@ -148,7 +244,8 @@
       "bar",
       "participation_rate",
       "slippage"
-    ]
+    ],
+    "id": "STOCK-A11"
   },
   "execution-fill-record": {
     "layer": "Atomic",
@@ -158,7 +255,8 @@
       "fill_id",
       "event_id",
       "expected_version"
-    ]
+    ],
+    "id": "STOCK-A12"
   },
   "order-apply-fill": {
     "layer": "Atomic",
@@ -167,14 +265,16 @@
       "order_id",
       "fill_id",
       "expected_version"
-    ]
+    ],
+    "id": "STOCK-A13"
   },
   "account-apply-fill": {
     "layer": "Atomic",
     "write": true,
     "fields": [
       "fill_id"
-    ]
+    ],
+    "id": "STOCK-A14"
   },
   "execution-fill-list": {
     "layer": "Atomic",
@@ -183,150 +283,301 @@
       "order_id",
       "offset",
       "limit"
-    ]
+    ],
+    "id": "STOCK-A15"
   },
   "cta-order-plan": {
     "layer": "Upper",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Persist integer net-lot plans with close-before-open dependencies; do not accept stock weights."
+    "description": "Persist integer net-lot plans with close-before-open dependencies; do not accept stock weights.",
+    "id": "CTA-U1",
+    "title": "生成调仓计划",
+    "atomic_ids": [
+      "CTA-A1",
+      "CTA-A2",
+      "CTA-A3",
+      "CTA-A4"
+    ],
+    "atomic_tools": [
+      "cta-contract-spec",
+      "cta-trading-session",
+      "cta-position-gap",
+      "cta-offset-split"
+    ]
   },
   "cta-order-precheck": {
     "layer": "Upper",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Check the latest contract, session, dependencies and resources without freezing."
+    "description": "Check the latest contract, session, dependencies and resources without freezing.",
+    "id": "CTA-U2",
+    "title": "下单前检查",
+    "atomic_ids": [
+      "CTA-A1",
+      "CTA-A2",
+      "CTA-A5",
+      "CTA-A6",
+      "CTA-A7"
+    ],
+    "atomic_tools": [
+      "cta-contract-spec",
+      "cta-trading-session",
+      "cta-order-rule-check",
+      "cta-margin-calculate",
+      "cta-fee-calculate"
+    ]
   },
   "cta-order-submit": {
     "layer": "Upper",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Revalidate a persisted plan leg and atomically register and freeze resources."
+    "description": "Revalidate a persisted plan leg and atomically register and freeze resources.",
+    "id": "CTA-U3",
+    "title": "提交订单",
+    "atomic_ids": [
+      "CTA-A5",
+      "CTA-A6",
+      "CTA-A7",
+      "CTA-A8"
+    ],
+    "atomic_tools": [
+      "cta-order-rule-check",
+      "cta-margin-calculate",
+      "cta-fee-calculate",
+      "cta-order-register"
+    ]
   },
   "cta-order-cancel": {
     "layer": "Upper",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Cancel remaining lots and release resources while preserving actual fills."
+    "description": "Cancel remaining lots and release resources while preserving actual fills.",
+    "id": "CTA-U4",
+    "title": "撤销余单",
+    "atomic_ids": [
+      "CTA-A9",
+      "CTA-A12",
+      "CTA-A14"
+    ],
+    "atomic_tools": [
+      "cta-order-release",
+      "cta-order-state-update",
+      "cta-order-detail"
+    ]
   },
   "cta-execution-simulate": {
     "layer": "Upper",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Advance one completed futures bar through matching, booking and release."
+    "description": "Advance one completed futures bar through matching, booking and release.",
+    "id": "CTA-U5",
+    "title": "模拟成交并记账",
+    "atomic_ids": [
+      "CTA-A1",
+      "CTA-A2",
+      "CTA-A6",
+      "CTA-A7",
+      "CTA-A9",
+      "CTA-A10",
+      "CTA-A11",
+      "CTA-A12",
+      "CTA-A13"
+    ],
+    "atomic_tools": [
+      "cta-contract-spec",
+      "cta-trading-session",
+      "cta-margin-calculate",
+      "cta-fee-calculate",
+      "cta-order-release",
+      "cta-order-match",
+      "cta-fill-record",
+      "cta-order-state-update",
+      "cta-fill-book"
+    ]
   },
   "cta-order-query": {
     "layer": "Upper",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Read order, fills, reservations and account reconciliation status."
+    "description": "Read order, fills, reservations and account reconciliation status.",
+    "id": "CTA-U6",
+    "title": "查订单和成交",
+    "atomic_ids": [
+      "CTA-A14"
+    ],
+    "atomic_tools": [
+      "cta-order-detail"
+    ]
   },
   "cta-daily-settle": {
     "layer": "Upper",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Apply explicit-price daily marked-to-market settlement and day migration."
+    "description": "Apply explicit-price daily marked-to-market settlement and day migration.",
+    "id": "CTA-U7",
+    "title": "日终结算",
+    "atomic_ids": [
+      "CTA-A1",
+      "CTA-A2",
+      "CTA-A6",
+      "CTA-A15"
+    ],
+    "atomic_tools": [
+      "cta-contract-spec",
+      "cta-trading-session",
+      "cta-margin-calculate",
+      "cta-settlement-apply"
+    ]
   },
   "cta-roll-plan": {
     "layer": "Upper",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Persist linked old-close/new-open plans; plans do not imply executed progress."
+    "description": "Persist linked old-close/new-open plans; plans do not imply executed progress.",
+    "id": "CTA-U8",
+    "title": "生成换月计划",
+    "atomic_ids": [
+      "CTA-A1",
+      "CTA-A2",
+      "CTA-A3",
+      "CTA-A4",
+      "CTA-A16"
+    ],
+    "atomic_tools": [
+      "cta-contract-spec",
+      "cta-trading-session",
+      "cta-position-gap",
+      "cta-offset-split",
+      "cta-roll-progress"
+    ]
   },
   "cta-contract-spec": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Read the configured contract and trade-date rule profile."
+    "description": "Read the configured contract and trade-date rule profile.",
+    "id": "CTA-A1",
+    "title": "查合约规则"
   },
   "cta-trading-session": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Resolve an explicit calendar interval to a trading day, including night sessions."
+    "description": "Resolve an explicit calendar interval to a trading day, including night sessions.",
+    "id": "CTA-A2",
+    "title": "判交易日和时段"
   },
   "cta-position-gap": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Read gross positions and active open/close leaves to calculate signed net-lot gap."
+    "description": "Read gross positions and active open/close leaves to calculate signed net-lot gap.",
+    "id": "CTA-A3",
+    "title": "算持仓缺口"
   },
   "cta-offset-split": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Calculate side and today/yesterday closing splits followed by opening lots."
+    "description": "Calculate side and today/yesterday closing splits followed by opening lots.",
+    "id": "CTA-A4",
+    "title": "拆开平指令"
   },
   "cta-order-rule-check": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Read authoritative rules and resources to validate a persisted plan leg; do not freeze."
+    "description": "Read authoritative rules and resources to validate a persisted plan leg; do not freeze.",
+    "id": "CTA-A5",
+    "title": "检查委托"
   },
   "cta-margin-calculate": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Calculate explicit RATE or FIXED margin and notional; do not book money."
+    "description": "Calculate explicit RATE or FIXED margin and notional; do not book money.",
+    "id": "CTA-A6",
+    "title": "算保证金"
   },
   "cta-fee-calculate": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Calculate per-lot or notional incremental fees using the explicit offset."
+    "description": "Calculate per-lot or notional incremental fees using the explicit offset.",
+    "id": "CTA-A7",
+    "title": "算手续费"
   },
   "cta-order-register": {
     "layer": "Atomic",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Atomically register and freeze one validated persisted plan leg."
+    "description": "Atomically register and freeze one validated persisted plan leg.",
+    "id": "CTA-A8",
+    "title": "登记并冻结"
   },
   "cta-order-release": {
     "layer": "Atomic",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Release only excess resources justified by persisted remaining lots and fills."
+    "description": "Release only excess resources justified by persisted remaining lots and fills.",
+    "id": "CTA-A9",
+    "title": "释放冻结"
   },
   "cta-order-match": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Calculate a conservative opening-price candidate; do not occupy capacity or book."
+    "description": "Calculate a conservative opening-price candidate; do not occupy capacity or book.",
+    "id": "CTA-A10",
+    "title": "模拟撮合"
   },
   "cta-fill-record": {
     "layer": "Atomic",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Recompute from a persisted market event and atomically record a fill and occupy capacity."
+    "description": "Recompute from a persisted market event and atomically record a fill and occupy capacity.",
+    "id": "CTA-A11",
+    "title": "登记成交"
   },
   "cta-order-state-update": {
     "layer": "Atomic",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Apply a persisted fill or versioned cancellation to order quantities only."
+    "description": "Apply a persisted fill or versioned cancellation to order quantities only.",
+    "id": "CTA-A12",
+    "title": "更新订单状态"
   },
   "cta-fill-book": {
     "layer": "Atomic",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Idempotently book an existing applied fill, fees, realized PnL and lot claims."
+    "description": "Idempotently book an existing applied fill, fees, realized PnL and lot claims.",
+    "id": "CTA-A13",
+    "title": "成交记账"
   },
   "cta-order-detail": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Read current order, fills, reservations and accounting status without mutation."
+    "description": "Read current order, fills, reservations and accounting status without mutation.",
+    "id": "CTA-A14",
+    "title": "读订单明细"
   },
   "cta-settlement-apply": {
     "layer": "Atomic",
     "write": true,
     "asset_class": "FUTURES",
-    "description": "Book only incremental daily holding PnL and migrate lot buckets once."
+    "description": "Book only incremental daily holding PnL and migrate lot buckets once.",
+    "id": "CTA-A15",
+    "title": "结转交易日"
   },
   "cta-roll-progress": {
     "layer": "Atomic",
     "write": false,
     "asset_class": "FUTURES",
-    "description": "Read actual booked old-close/new-open lots and unconnected exposure."
+    "description": "Read actual booked old-close/new-open lots and unconnected exposure.",
+    "id": "CTA-A16",
+    "title": "查换月进度"
   }
 }

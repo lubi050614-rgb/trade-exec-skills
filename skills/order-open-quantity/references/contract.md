@@ -10,6 +10,10 @@ Read/calculation interface: does not mutate account, orders, fills or reservatio
 
 Single domain step only. Does not call an Upper workflow.
 
+Atomic identifier: STOCK-A1.
+
+Identifiers are documentation labels only. Invoke this tool by its full name `order-open-quantity`.
+
 Preconditions: initialized simulation/account; configured fixture instrument; current order/account versions for applicable writes; persisted market event before recording fills; persisted fill before order/account application. Order registration remains PENDING_RESERVATION until reserve succeeds. Direct Atomic cancel must be followed by release. A pending fill blocks new plans, submissions and cancellation until order application and booking recover.
 
 Recovery: retry using the original key for completed operations; use a new key after correcting a rejected request. Pending simulation results require a new key and the same bar/model with fail_after omitted. Do not treat ACCOUNTING_PENDING or RECOVERY_REQUIRED as completed execution. SQLite serializes reservations and capacity writes. All state is local mock state.

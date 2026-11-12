@@ -394,8 +394,12 @@ class Runtime:
         fee = self.execution_fee_calculate(dict(side=o['side'], notional=str(price*o['quantity'])))['fee']
         cash = price*o['quantity']+dec(fee) if o['side']=='BUY' else self.sell_cash_needed(o,o['quantity'])
         q = o['quantity'] if o['side']=='SELL' else 0
-        require(dec(snap['available_cash']) >= cash, 'INSUFFICIENT_CASH')
-        require(snap['positions'].get(o['instrument_id'], {}).get('sellable_quantity', 0) >= q, 'INSUFFICIENT_SELLABLE')
+        available_cash=dec(snap['available_cash'])
+        available_quantity=snap['positions'].get(o['instrument_id'], {}).get('sellable_quantity', 0)
+        require(available_cash >= cash, 'INSUFFICIENT_CASH', required_cash=money(cash),
+                available_cash=money(available_cash), shortfall_cash=money(max(D(0),cash-available_cash)), fee=fee)
+        require(available_quantity >= q, 'INSUFFICIENT_SELLABLE', required_quantity=q,
+                available_quantity=available_quantity, shortfall_quantity=max(0,q-available_quantity), fee=fee)
         return dict(required_cash=money(cash), required_quantity=q, fee=fee, account_version=snap['version'])
 
     def order_precheck(self, a):
@@ -464,6 +468,7 @@ class Runtime:
         return dict(released_cash=money(released), remaining_cash=o['reserved_cash'], remaining_quantity=qty)
 
     def order_cancel(self, a):
+        self.invoke('order-state-read',a)
         action=a.get('action','CONFIRM'); o=self.order(a)
         if action in ('REQUEST','REJECT'):
             self.version(o,a)
@@ -473,7 +478,7 @@ class Runtime:
             return dict(order=copy.deepcopy(o),release=None,commit_status='COMMITTED')
         result = self.invoke('order-cancel-remainder', a)
         release = self.invoke('order-release-reserve', dict(order_id=a['order_id'], expected_version=result['order']['version']))
-        return dict(order=self.order_state_read(a), release=release, commit_status='COMMITTED')
+        return dict(order=self.order_state_read(a), canceled_quantity=result['canceled_quantity'], release=release, commit_status='COMMITTED')
 
     def validate_bar(self, b):
         require(b['price_basis']=='UNADJUSTED', 'UNKNOWN_PRICE_BASIS')

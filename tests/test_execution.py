@@ -63,6 +63,7 @@ class ExecutionTests(unittest.TestCase):
         q=self.query(new['order_id']); canceled=self.ok('order-cancel',dict(order_id=new['order_id'],expected_version=q['order']['version']))
         self.assertEqual(canceled['order']['filled_quantity'],100)
         self.assertEqual(canceled['order']['canceled_quantity'],300)
+        self.assertEqual(canceled['canceled_quantity'],300)
         self.assertEqual(self.query(new['order_id'])['account']['frozen_cash'],'0.00')
 
     def test_idempotency(self):
@@ -115,6 +116,13 @@ class ExecutionTests(unittest.TestCase):
         o=self.draft()
         for changes,code in [(dict(quantity=101),'INVALID_QUANTITY'),(dict(limit_price='10.001'),'INVALID_PRICE'),(dict(quantity=10000),'INSUFFICIENT_CASH'),(dict(side='SELL',quantity=500),'INSUFFICIENT_SELLABLE'),(dict(account_version=2),'STALE_SNAPSHOT'),(dict(submitted_at='2026-01-05T12:00:00+08:00'),'OUTSIDE_TRADING_SESSION')]:
             self.assertEqual(self.call('order-precheck',dict(order=dict(o,**changes)))['error']['code'],code)
+        cash=self.call('order-precheck',dict(order=dict(o,quantity=10000)))['error']['details']
+        self.assertEqual(cash['required_cash'],'100030.00')
+        self.assertEqual(cash['available_cash'],'96000.00')
+        self.assertEqual(cash['shortfall_cash'],'4030.00')
+        shares=self.call('order-precheck',dict(order=dict(o,side='SELL',quantity=500)))['error']['details']
+        self.assertEqual(shares['available_quantity'],400)
+        self.assertEqual(shares['shortfall_quantity'],100)
 
     def test_concurrent_reservation(self):
         o=dict(self.draft(),quantity=6000)

@@ -111,6 +111,9 @@
               ],
               "additionalProperties": true
             },
+            "canceled_quantity": {
+              "type": "integer"
+            },
             "release": {
               "anyOf": [
                 {

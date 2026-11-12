@@ -2,6 +2,11 @@
 
 Responsibility: Recompute from a persisted market event and atomically record a fill and occupy capacity. Layer: Atomic. This interface does not connect to a live broker, use stock weight semantics or assume official exchange rules.
 
+## CTA-A11 登记成交
+
+层级：Atomic。负责单个领域步骤。编号仅用于说明对应关系；Agent 调用必须使用完整工具名 `cta-fill-record`。
+
+
 Business invariants: targets keep their normalized quantity for the same version; newer CTA targets supersede earlier unsubmitted legs. Stock order-plan persists normalization and requires an idempotency key. Cancel action REQUEST preserves live leaves and resources, REJECT clears only cancel_pending, CONFIRM cancels the remaining leaves and releases after bookkeeping. Omitted action retains the legacy synchronous mock confirmation. Use REQUEST explicitly for asynchronous simulations. Fill conflicts persist RECONCILE and block new submissions; valid recorded fills and queries remain available. Clearing RECONCILE requires the trusted runtime resolve_reconciliation boundary with independent evidence and CAS checks, not an agent tool. CTA reservation_policy defaults to UPPER_BOUND_V1; ORDER_PRICE_V1 is an explicit fixture policy, and fills exceeding the reserved budget (including retained leaves) do not match. These are local simulation contracts, not live broker callbacks.
 
 Contracts: [input](../assets/input.schema.json), [output](../assets/output.schema.json). Executed fixtures: [request](../assets/example.json), [success](../assets/success.json), [failure request](../assets/failure-request.json), [failure](../assets/failure.json).
