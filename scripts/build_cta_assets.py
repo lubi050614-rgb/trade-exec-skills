@@ -163,24 +163,7 @@ def main():
         write(folder/'scripts/engine.py',f'from cta_execution.cli import run\n\ndef execute():\n    return run({tool!r})\n')
         for package in ('cta_execution','execution_common'): shutil.copytree(ROOT/package,folder/'scripts'/package,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__'))
         layer='Upper' if tool in UPPER else 'Atomic'; catalog[tool]=dict(layer=layer,write=tool in WRITES,asset_class='FUTURES',description=DESCRIPTIONS[tool],**metadata(tool))
-        write(folder/'SKILL.md',f'''---
-name: {tool}
-description: {DESCRIPTIONS[tool]} Futures simulation only; never route stock weights here.
-when_to_use: Explicit {tool} futures simulation requests.
-version: 0.2.0
-entry: scripts/run.py
-allowed_tools:
-  - skill_run_script
----
 
-This {layer} tool requires `asset_class=FUTURES`, an explicit account/simulation and integer lots. Read [contract](references/contract.md) and [input schema](assets/input.schema.json). Missing or ambiguous contract, trade date, offset or quantity is an error, not permission to guess.
-
-Invoke `skill_run_script` with `scripts/run.py` and `--db cta.sqlite --input assets/example.json`. Direct Python accepts the same arguments; stdout is JSON and exit code is 0 for an envelope with ok=true, 1 for an error. A pending commit_status still requires recovery.
-
-For a fresh planning session, add `--init <session.json>`. For other examples, reproduce the prerequisite state using the project replay script and assets/prepared-state.json. Never copy resources from sibling skills implicitly. Core dependencies are bundled within scripts/.
-
-{annotation(tool)}
-'''.rstrip()+'\n')
         write(folder/'references/contract.md',f'''# {tool}
 
 Responsibility: {DESCRIPTIONS[tool]} Layer: {layer}. This interface does not connect to a live broker, use stock weight semantics or assume official exchange rules.
@@ -209,5 +192,7 @@ Reproduce: `python scripts/replay_cta_example.py --tool {tool}` from the source/
     write(ROOT/'contracts/catalog.json',dict(stock,**catalog))
     write(ROOT/'plugin.json',dict(name='execution-tools',version='0.2.0',description='21 stock + 24 CTA simulation tools',mode='simulation_only',skills=[dict(name=t,path='skills/'+t,entry='scripts/run.py',asset_class='FUTURES' if t.startswith('cta-') else 'STOCK') for t in list(stock)+TOOLS]))
 
+    from scripts.skill_docs import build_docs
+    build_docs(TOOLS)
 
 if __name__=='__main__': main()

@@ -11,6 +11,24 @@ from cta_execution.engine import TOOLS as CTA_TOOLS
 TOOLS=STOCK_TOOLS+CTA_TOOLS
 
 
+def codex_skill(source):
+    """Project native metadata to Codex while preserving the guide body."""
+    parts = re.split(r'^---\s*$', source, flags=re.M)
+    frontmatter, body = parts[1], parts[2]
+    field = lambda key: re.search(r'^' + key + r': (.+)$', frontmatter, re.M).group(1)
+    return f'''---
+name: {field('name')}
+description: {field('description')}
+allowed-tools:
+  - skill_run_script
+metadata:
+  version: "{field('version')}"
+  entry: {field('entry')}
+  when_to_use: {field('when_to_use')}
+---
+''' + body
+
+
 def archive(output, files, base, overrides=None):
     with zipfile.ZipFile(output,'w',zipfile.ZIP_DEFLATED) as z:
         for f in sorted(files):
@@ -41,21 +59,7 @@ def main():
         target=codex/tool
         shutil.copytree(ROOT/'skills'/tool,target,dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__'))
         source=(target/'SKILL.md').read_text(encoding='utf-8')
-        body=re.split(r'^---\s*$',source,flags=re.M)[2]
-        domain='futures' if tool in CTA_TOOLS else 'stock'
-        description=re.search(r'^description: (.+)$',source,re.M).group(1)
-        metadata=f'''---
-name: {tool}
-description: {description}
-allowed-tools:
-  - skill_run_script
-metadata:
-  version: "{'0.2.0' if tool in CTA_TOOLS else '0.1.0'}"
-  entry: scripts/run.py
-  when_to_use: Explicit {tool} {domain} simulation requests.
----
-'''
-        (target/'SKILL.md').write_text(metadata+body,encoding='utf-8')
+        (target/'SKILL.md').write_text(codex_skill(source),encoding='utf-8')
     archive(out/'stock-execution-codex.zip',list(codex.rglob('*')),codex.parent)
     archive(out/'execution-tools-codex.zip',list(codex.rglob('*')),codex.parent)
     cta_codex=[f for tool in CTA_TOOLS for f in (codex/tool).rglob('*')]

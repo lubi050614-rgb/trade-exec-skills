@@ -7,7 +7,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from stock_execution.engine import TOOLS, WRITES
-from scripts.stock_upper_skills import UPPER, metadata, instructions
+from scripts.stock_upper_skills import UPPER, metadata
 
 
 def write(path,value):
@@ -156,23 +156,7 @@ def main():
         write(folder/'assets/runtime.json',dict(python='>=3.11',dependencies=[],mode='simulation_only',database='SQLite',core='bundled scripts/stock_execution'))
         write(folder/'scripts/run.py','from pathlib import Path\nimport sys\nsys.path.insert(0,str(Path(__file__).resolve().parent))\nfrom engine import execute\n\nif __name__ == "__main__":\n    raise SystemExit(execute())\n')
         write(folder/'scripts/engine.py',f'from stock_execution.cli import run\n\ndef execute():\n    return run({tool!r})\n')
-        write(folder/'SKILL.md',f'''---
-name: {tool}
-description: {UPPER[tool][1]+'。'+UPPER[tool][3] if tool in UPPER else 'Execute the '+tool+' stock simulation interface using explicit JSON inputs and a persistent mock session.'}
-when_to_use: {UPPER[tool][1]+'，用于股票模拟执行。' if tool in UPPER else 'Explicit '+tool+' requests for simulated stock execution.'}
-version: 0.1.0
-entry: scripts/run.py
-allowed_tools:
-  - skill_run_script
----
 
-Use this independent {catalog[tool]['layer']} interface for `{tool}`. Read [contract](references/contract.md) for its required inputs and preconditions. This tool uses synthetic stock rules and an authoritative mock account only.
-
-Call `skill_run_script` with `scripts/run.py` and arguments `--db simulation.sqlite --input assets/example.json`. For a fresh session add `--init <session.json>` using an exchange fixture from the plugin examples. Run via Python directly with the same arguments when skill_run_script is unavailable.
-
-Stdout is one JSON envelope. Exit 0 means transport/domain success, 1 means an error envelope; inspect `commit_status` for pending recovery. The database path must be shared by related calls. Never substitute real account credentials or infer a production rule profile.
-{instructions(tool) if tool in UPPER else '## '+metadata(tool)['id']+'\n\n层级：Atomic。编号仅用于说明对应关系；Agent 调用必须使用完整工具名 `'+tool+'`。'}
-'''.rstrip()+'\n')
         duty,exclusion=RESPONSIBILITIES[tool]
         write(folder/'references/contract.md',f'''# {tool}
 
@@ -219,7 +203,9 @@ Errors include INVALID_REQUEST, IDEMPOTENCY_CONFLICT, STALE_ORDER_VERSION, STALE
         write(folder/'assets/output.schema.json',schema)
     for tool in TOOLS:
         shutil.copytree(ROOT/'stock_execution',ROOT/'skills'/tool/'scripts/stock_execution',dirs_exist_ok=True,ignore=shutil.ignore_patterns('__pycache__'))
-    from build_cta_assets import main as build_cta
+    from scripts.skill_docs import build_docs
+    build_docs(TOOLS)
+    from scripts.build_cta_assets import main as build_cta
     build_cta()
 
 
