@@ -1,0 +1,15 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "roll_id": "roll1",
+    "old_plan_id": "roll1:1:SIM:OLD",
+    "new_plan_id": "roll1:1:SIM:NEW",
+    "lots": 2,
+    "direction": 1,
+    "hash": "b8686fbf5c0ccd4a715a3ea6b3170b7661caa61491f6404ea3314e1aa047267d",
+    "commit_status": "COMMITTED"
+  },
+  "warnings": []
+}

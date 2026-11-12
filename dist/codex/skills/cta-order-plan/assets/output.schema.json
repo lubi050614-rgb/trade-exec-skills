@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "plan_id": {
+              "type": "string"
+            },
+            "contract_id": {
+              "type": "string"
+            },
+            "target_net_lots": {
+              "type": "integer"
+            },
+            "leg_ids": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "hash": {
+              "type": "string"
+            },
+            "normalization": {
+              "type": "object",
+              "properties": {
+                "actual_long_lots": {
+                  "type": "integer"
+                },
+                "actual_short_lots": {
+                  "type": "integer"
+                },
+                "actual_net_lots": {
+                  "type": "integer"
+                },
+                "pending_open_lots": {
+                  "type": "integer"
+                },
+                "pending_close_lots": {
+                  "type": "integer"
+                },
+                "gap_lots": {
+                  "type": "integer"
+                },
+                "conflicting_order_ids": {
+                  "type": "array",
+                  "items": {}
+                },
+                "retained_order_ids": {
+                  "type": "array",
+                  "items": {}
+                }
+              },
+              "required": [
+                "actual_long_lots",
+                "actual_short_lots",
+                "actual_net_lots",
+                "pending_open_lots",
+                "pending_close_lots",
+                "gap_lots",
+                "conflicting_order_ids",
+                "retained_order_ids"
+              ],
+              "additionalProperties": true
+            },
+            "commit_status": {
+              "type": "string"
+            },
+            "legs": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "leg_id": {
+                    "type": "string"
+                  },
+                  "plan_id": {
+                    "type": "string"
+                  },
+                  "contract_id": {
+                    "type": "string"
+                  },
+                  "side": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "string"
+                  },
+                  "lots": {
+                    "type": "integer"
+                  },
+                  "limit_price": {
+                    "type": "string"
+                  },
+                  "order_type": {
+                    "type": "string"
+                  },
+                  "time_in_force": {
+                    "type": "string"
+                  },
+                  "target_id": {
+                    "type": "string"
+                  },
+                  "target_version": {
+                    "type": "integer"
+                  },
+                  "trade_date": {
+                    "type": "string"
+                  },
+                  "dependencies": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "buffer": {
+                    "type": "string"
+                  },
+                  "order_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  }
+                },
+                "required": [
+                  "leg_id",
+                  "plan_id",
+                  "contract_id",
+                  "side",
+                  "offset",
+                  "lots",
+                  "limit_price",
+                  "order_type",
+                  "time_in_force",
+                  "target_id",
+                  "target_version",
+                  "trade_date",
+                  "dependencies",
+                  "buffer",
+                  "order_id"
+                ],
+                "additionalProperties": true
+              }
+            }
+          },
+          "required": [
+            "plan_id",
+            "contract_id",
+            "target_net_lots",
+            "leg_ids",
+            "hash",
+            "normalization",
+            "commit_status",
+            "legs"
+          ],
+          "additionalProperties": true
+        },
+        "warnings": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "data",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "retryable",
+            "details"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

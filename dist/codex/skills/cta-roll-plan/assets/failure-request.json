@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "account_id": "mock-futures",
+  "simulation_id": "does-not-exist",
+  "asset_class": "FUTURES",
+  "idempotency_key": "example-1",
+  "data": {
+    "roll_id": "roll1",
+    "old_contract_id": "SIM:OLD",
+    "new_contract_id": "SIM:NEW",
+    "lots": 2,
+    "old_reference_price": "100",
+    "new_reference_price": "100",
+    "account_version": 1,
+    "as_of": "2026-01-05T09:01:00+08:00"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-account-apply-fill",
+  "account_id": "mock-SSE",
+  "simulation_id": "does-not-exist",
+  "data": {
+    "fill_id": "bar-1:o-1"
+  },
+  "idempotency_key": "example-1"
+}

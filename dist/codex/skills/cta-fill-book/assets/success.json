@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "account_id": "mock-futures",
+    "asset_class": "FUTURES",
+    "currency": "CNY",
+    "balance": "99998",
+    "as_of": "2026-01-05T09:02:00+08:00",
+    "version": 4,
+    "equity": "99998",
+    "floating_pnl": "0",
+    "position_margin": "100.00",
+    "frozen_cash": "1",
+    "available_cash": "99897.00",
+    "margin_shortfall": "0",
+    "risk_status": "NORMAL",
+    "positions": {
+      "SIM:OLD": {
+        "long_today": 0,
+        "long_yesterday": 1,
+        "short_today": 0,
+        "short_yesterday": 0,
+        "available_long_today": 0,
+        "available_long_yesterday": 0,
+        "available_short_today": 0,
+        "available_short_yesterday": 0,
+        "net_lots": 1,
+        "lots": [
+          {
+            "lot_id": "initial",
+            "side": "LONG",
+            "bucket": "YESTERDAY",
+            "quantity": 1,
+            "basis_price": "100",
+            "opened_trade_date": "2026-01-02"
+          }
+        ]
+      }
+    },
+    "trade_date": "2026-01-05",
+    "reconciliation_status": "CONSISTENT"
+  },
+  "warnings": []
+}

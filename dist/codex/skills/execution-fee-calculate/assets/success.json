@@ -1,0 +1,10 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-execution-fee-calculate",
+  "data": {
+    "fee": "5.00",
+    "profile_id": "simulation_fixture"
+  },
+  "warnings": []
+}

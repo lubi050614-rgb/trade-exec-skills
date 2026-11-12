@@ -1,4 +1,3 @@
 .runtime/
 __pycache__/
 *.sqlite*
-dist/

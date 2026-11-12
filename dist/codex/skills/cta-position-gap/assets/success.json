@@ -1,0 +1,16 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "actual_long_lots": 3,
+    "actual_short_lots": 0,
+    "actual_net_lots": 3,
+    "pending_open_lots": 0,
+    "pending_close_lots": 0,
+    "gap_lots": -5,
+    "conflicting_order_ids": [],
+    "retained_order_ids": []
+  },
+  "warnings": []
+}

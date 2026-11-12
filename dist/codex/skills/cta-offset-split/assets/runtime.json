@@ -1,0 +1,10 @@
+{
+  "python": ">=3.11",
+  "dependencies": [],
+  "mode": "simulation_only",
+  "asset_class": "FUTURES",
+  "shared_core": [
+    "cta_execution",
+    "execution_common"
+  ]
+}

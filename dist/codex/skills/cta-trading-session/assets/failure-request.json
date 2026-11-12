@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "account_id": "mock-futures",
+  "simulation_id": "does-not-exist",
+  "asset_class": "FUTURES",
+  "idempotency_key": "example-1",
+  "data": {
+    "contract_id": "SIM:OLD",
+    "timestamp": "2026-01-09T23:59:00+08:00"
+  }
+}

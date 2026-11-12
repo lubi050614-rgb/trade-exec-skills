@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-order-target-gap",
+  "account_id": "mock-SSE",
+  "simulation_id": "does-not-exist",
+  "data": {
+    "target_quantity": 1000,
+    "actual_quantity": 400,
+    "buy_quantity": 200,
+    "sell_quantity": 0
+  },
+  "idempotency_key": "plan-1"
+}

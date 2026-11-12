@@ -1,0 +1,408 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "order": {
+              "type": "object",
+              "properties": {
+                "leg_id": {
+                  "type": "string"
+                },
+                "plan_id": {
+                  "type": "string"
+                },
+                "contract_id": {
+                  "type": "string"
+                },
+                "side": {
+                  "type": "string"
+                },
+                "offset": {
+                  "type": "string"
+                },
+                "lots": {
+                  "type": "integer"
+                },
+                "limit_price": {
+                  "type": "string"
+                },
+                "order_type": {
+                  "type": "string"
+                },
+                "time_in_force": {
+                  "type": "string"
+                },
+                "target_id": {
+                  "type": "string"
+                },
+                "target_version": {
+                  "type": "integer"
+                },
+                "trade_date": {
+                  "type": "string"
+                },
+                "dependencies": {
+                  "type": "array",
+                  "items": {}
+                },
+                "buffer": {
+                  "type": "string"
+                },
+                "order_id": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "submitted_at": {
+                  "type": "string"
+                },
+                "account_version": {
+                  "type": "integer"
+                },
+                "client_order_id": {
+                  "type": "string"
+                },
+                "sequence": {
+                  "type": "integer"
+                },
+                "status": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "integer"
+                },
+                "original_lots": {
+                  "type": "integer"
+                },
+                "filled_lots": {
+                  "type": "integer"
+                },
+                "leaves_lots": {
+                  "type": "integer"
+                },
+                "canceled_lots": {
+                  "type": "integer"
+                },
+                "reserved_cash": {
+                  "type": "string"
+                },
+                "claims": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "lot_id": {
+                        "type": "string"
+                      },
+                      "quantity": {
+                        "type": "integer"
+                      },
+                      "bucket": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "lot_id",
+                      "quantity"
+                    ],
+                    "additionalProperties": true
+                  }
+                },
+                "charged_fee": {
+                  "type": "string"
+                },
+                "notional": {
+                  "type": "string"
+                },
+                "release_pending": {
+                  "type": "boolean"
+                },
+                "cancel_pending": {
+                  "type": "boolean"
+                },
+                "average_price": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "leg_id",
+                "plan_id",
+                "contract_id",
+                "side",
+                "offset",
+                "lots",
+                "limit_price",
+                "order_type",
+                "time_in_force",
+                "target_id",
+                "target_version",
+                "trade_date",
+                "dependencies",
+                "buffer",
+                "order_id",
+                "submitted_at",
+                "account_version",
+                "client_order_id",
+                "sequence",
+                "status",
+                "version",
+                "original_lots",
+                "filled_lots",
+                "leaves_lots",
+                "canceled_lots",
+                "reserved_cash",
+                "claims",
+                "charged_fee",
+                "notional",
+                "release_pending"
+              ],
+              "additionalProperties": true
+            },
+            "fills": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "fill_id": {
+                    "type": "string"
+                  },
+                  "order_id": {
+                    "type": [
+                      "string",
+                      "null"
+                    ]
+                  },
+                  "contract_id": {
+                    "type": "string"
+                  },
+                  "side": {
+                    "type": "string"
+                  },
+                  "offset": {
+                    "type": "string"
+                  },
+                  "lots": {
+                    "type": "integer"
+                  },
+                  "price": {
+                    "type": "string"
+                  },
+                  "notional": {
+                    "type": "string"
+                  },
+                  "fee": {
+                    "type": "string"
+                  },
+                  "reserved_consumption": {
+                    "type": "string"
+                  },
+                  "executed_at": {
+                    "type": "string"
+                  },
+                  "trade_date": {
+                    "type": "string"
+                  },
+                  "market_event_id": {
+                    "type": "string"
+                  },
+                  "model_version": {
+                    "type": "string"
+                  },
+                  "accounting_status": {
+                    "type": "string"
+                  },
+                  "order_applied": {
+                    "type": "boolean"
+                  },
+                  "realized_pnl": {
+                    "type": "string"
+                  },
+                  "source_hash": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "fill_id",
+                  "order_id",
+                  "contract_id",
+                  "side",
+                  "offset",
+                  "lots",
+                  "price",
+                  "notional",
+                  "fee",
+                  "reserved_consumption",
+                  "executed_at",
+                  "trade_date",
+                  "market_event_id",
+                  "model_version",
+                  "accounting_status",
+                  "order_applied",
+                  "realized_pnl",
+                  "source_hash"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "account": {
+              "type": "object",
+              "properties": {
+                "account_id": {
+                  "type": "string"
+                },
+                "asset_class": {
+                  "type": "string"
+                },
+                "currency": {
+                  "type": "string"
+                },
+                "balance": {
+                  "type": "string"
+                },
+                "as_of": {
+                  "type": "string"
+                },
+                "version": {
+                  "type": "integer"
+                },
+                "equity": {
+                  "type": "string"
+                },
+                "floating_pnl": {
+                  "type": "string"
+                },
+                "position_margin": {
+                  "type": "string"
+                },
+                "frozen_cash": {
+                  "type": "string"
+                },
+                "available_cash": {
+                  "type": "string"
+                },
+                "margin_shortfall": {
+                  "type": "string"
+                },
+                "risk_status": {
+                  "type": "string"
+                },
+                "positions": {
+                  "type": "object",
+                  "additionalProperties": {}
+                },
+                "trade_date": {
+                  "type": "string"
+                },
+                "reconciliation_status": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "account_id",
+                "asset_class",
+                "currency",
+                "balance",
+                "as_of",
+                "version",
+                "equity",
+                "floating_pnl",
+                "position_margin",
+                "frozen_cash",
+                "available_cash",
+                "margin_shortfall",
+                "risk_status",
+                "positions",
+                "trade_date",
+                "reconciliation_status"
+              ],
+              "additionalProperties": true
+            },
+            "commit_status": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "order",
+            "fills",
+            "account",
+            "commit_status"
+          ],
+          "additionalProperties": true
+        },
+        "warnings": {
+          "type": "array"
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "data",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "retryable",
+            "details"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

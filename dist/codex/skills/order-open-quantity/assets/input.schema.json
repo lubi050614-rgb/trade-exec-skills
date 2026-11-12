@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string"
+    },
+    "account_id": {
+      "type": "string"
+    },
+    "simulation_id": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "instrument_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "instrument_id"
+      ],
+      "additionalProperties": false
+    },
+    "idempotency_key": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "account_id",
+    "simulation_id",
+    "data"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

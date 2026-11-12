@@ -1,0 +1,1659 @@
+{
+  "order-plan": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "account_snapshot_id": {
+            "type": "string"
+          },
+          "as_of": {
+            "type": "string"
+          },
+          "total_assets": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "coverage": {
+            "const": "FULL"
+          },
+          "target_id": {
+            "type": "string"
+          },
+          "target_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "targets": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "instrument_id": {
+                  "type": "string"
+                },
+                "target_weight": {
+                  "type": "string",
+                  "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+                },
+                "current_weight": {
+                  "type": "string",
+                  "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+                },
+                "reference_price": {
+                  "type": "string",
+                  "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+                },
+                "price_basis": {
+                  "const": "UNADJUSTED"
+                },
+                "price_as_of": {
+                  "type": "string"
+                },
+                "price_source": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "instrument_id",
+                "target_weight",
+                "current_weight",
+                "reference_price",
+                "price_basis",
+                "price_as_of",
+                "price_source"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "weight_tolerance": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "cash_buffer": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          }
+        },
+        "required": [
+          "account_snapshot_id",
+          "as_of",
+          "total_assets",
+          "coverage",
+          "target_id",
+          "target_version",
+          "targets"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-precheck": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "object",
+            "properties": {
+              "instrument_id": {
+                "type": "string"
+              },
+              "side": {
+                "enum": [
+                  "BUY",
+                  "SELL"
+                ]
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "order_type": {
+                "enum": [
+                  "LIMIT",
+                  "MARKET"
+                ]
+              },
+              "limit_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "protection_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "time_in_force": {
+                "const": "DAY"
+              },
+              "submitted_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "target_id": {
+                "type": "string"
+              },
+              "target_version": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "account_version": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "instrument_id",
+              "side",
+              "quantity",
+              "order_type",
+              "time_in_force",
+              "submitted_at",
+              "target_id",
+              "target_version",
+              "account_version"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "order_type": {
+                      "const": "LIMIT"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "limit_price"
+                  ]
+                },
+                "else": {
+                  "required": [
+                    "protection_price"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "order"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-submit": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "object",
+            "properties": {
+              "instrument_id": {
+                "type": "string"
+              },
+              "side": {
+                "enum": [
+                  "BUY",
+                  "SELL"
+                ]
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "order_type": {
+                "enum": [
+                  "LIMIT",
+                  "MARKET"
+                ]
+              },
+              "limit_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "protection_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "time_in_force": {
+                "const": "DAY"
+              },
+              "submitted_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "target_id": {
+                "type": "string"
+              },
+              "target_version": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "account_version": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "instrument_id",
+              "side",
+              "quantity",
+              "order_type",
+              "time_in_force",
+              "submitted_at",
+              "target_id",
+              "target_version",
+              "account_version"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "order_type": {
+                      "const": "LIMIT"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "limit_price"
+                  ]
+                },
+                "else": {
+                  "required": [
+                    "protection_price"
+                  ]
+                }
+              }
+            ]
+          },
+          "client_order_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "order",
+          "client_order_id"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-cancel": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "action": {
+            "enum": [
+              "REQUEST",
+              "CONFIRM",
+              "REJECT"
+            ]
+          }
+        },
+        "required": [
+          "order_id",
+          "expected_version"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "execution-simulate": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "bar": {
+            "type": "object",
+            "properties": {
+              "event_id": {
+                "type": "string"
+              },
+              "instrument_id": {
+                "type": "string"
+              },
+              "frequency": {
+                "enum": [
+                  "1m",
+                  "1d"
+                ]
+              },
+              "trade_date": {
+                "type": "string"
+              },
+              "start_at": {
+                "type": "string"
+              },
+              "end_at": {
+                "type": "string"
+              },
+              "open": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "high": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "low": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "close": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "volume": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "amount": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "tradable": {
+                "type": "boolean"
+              },
+              "price_limit_clear": {
+                "type": "boolean"
+              },
+              "price_basis": {
+                "const": "UNADJUSTED"
+              },
+              "source": {
+                "type": "string"
+              },
+              "synthetic": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "event_id",
+              "instrument_id",
+              "frequency",
+              "trade_date",
+              "start_at",
+              "end_at",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "amount",
+              "tradable",
+              "price_limit_clear",
+              "price_basis",
+              "source",
+              "synthetic"
+            ],
+            "additionalProperties": false
+          },
+          "visible_at": {
+            "type": "string"
+          },
+          "participation_rate": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "slippage": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "end_of_day": {
+            "type": "boolean"
+          },
+          "fail_after": {
+            "enum": [
+              "record",
+              "order",
+              "account"
+            ]
+          }
+        },
+        "required": [
+          "bar",
+          "visible_at",
+          "participation_rate",
+          "slippage"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-query": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-open-quantity": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "instrument_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "instrument_id"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-target-gap": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "target_quantity": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "actual_quantity": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "buy_quantity": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sell_quantity": {
+            "type": "integer",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "target_quantity",
+          "actual_quantity",
+          "buy_quantity",
+          "sell_quantity"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-rule-check": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "object",
+            "properties": {
+              "instrument_id": {
+                "type": "string"
+              },
+              "side": {
+                "enum": [
+                  "BUY",
+                  "SELL"
+                ]
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "order_type": {
+                "enum": [
+                  "LIMIT",
+                  "MARKET"
+                ]
+              },
+              "limit_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "protection_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "time_in_force": {
+                "const": "DAY"
+              },
+              "submitted_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "target_id": {
+                "type": "string"
+              },
+              "target_version": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "account_version": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "instrument_id",
+              "side",
+              "quantity",
+              "order_type",
+              "time_in_force",
+              "submitted_at",
+              "target_id",
+              "target_version",
+              "account_version"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "order_type": {
+                      "const": "LIMIT"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "limit_price"
+                  ]
+                },
+                "else": {
+                  "required": [
+                    "protection_price"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "order"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "execution-fee-calculate": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "side": {
+            "enum": [
+              "BUY",
+              "SELL"
+            ]
+          },
+          "notional": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "cumulative_notional": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "charged_fee": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          }
+        },
+        "required": [
+          "side",
+          "notional"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-resource-check": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "object",
+            "properties": {
+              "instrument_id": {
+                "type": "string"
+              },
+              "side": {
+                "enum": [
+                  "BUY",
+                  "SELL"
+                ]
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "order_type": {
+                "enum": [
+                  "LIMIT",
+                  "MARKET"
+                ]
+              },
+              "limit_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "protection_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "time_in_force": {
+                "const": "DAY"
+              },
+              "submitted_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "target_id": {
+                "type": "string"
+              },
+              "target_version": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "account_version": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "instrument_id",
+              "side",
+              "quantity",
+              "order_type",
+              "time_in_force",
+              "submitted_at",
+              "target_id",
+              "target_version",
+              "account_version"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "order_type": {
+                      "const": "LIMIT"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "limit_price"
+                  ]
+                },
+                "else": {
+                  "required": [
+                    "protection_price"
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "required": [
+          "order"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-register": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order": {
+            "type": "object",
+            "properties": {
+              "instrument_id": {
+                "type": "string"
+              },
+              "side": {
+                "enum": [
+                  "BUY",
+                  "SELL"
+                ]
+              },
+              "quantity": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "order_type": {
+                "enum": [
+                  "LIMIT",
+                  "MARKET"
+                ]
+              },
+              "limit_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "protection_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "time_in_force": {
+                "const": "DAY"
+              },
+              "submitted_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "target_id": {
+                "type": "string"
+              },
+              "target_version": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "account_version": {
+                "type": "integer",
+                "minimum": 1
+              }
+            },
+            "required": [
+              "instrument_id",
+              "side",
+              "quantity",
+              "order_type",
+              "time_in_force",
+              "submitted_at",
+              "target_id",
+              "target_version",
+              "account_version"
+            ],
+            "additionalProperties": false,
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "order_type": {
+                      "const": "LIMIT"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "limit_price"
+                  ]
+                },
+                "else": {
+                  "required": [
+                    "protection_price"
+                  ]
+                }
+              }
+            ]
+          },
+          "client_order_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "order",
+          "client_order_id"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-reserve": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "account_version": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "order_id",
+          "expected_version",
+          "account_version"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-state-read": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-cancel-remainder": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "order_id",
+          "expected_version"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-release-reserve": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "order_id",
+          "expected_version"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "execution-match": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "bar": {
+            "type": "object",
+            "properties": {
+              "event_id": {
+                "type": "string"
+              },
+              "instrument_id": {
+                "type": "string"
+              },
+              "frequency": {
+                "enum": [
+                  "1m",
+                  "1d"
+                ]
+              },
+              "trade_date": {
+                "type": "string"
+              },
+              "start_at": {
+                "type": "string"
+              },
+              "end_at": {
+                "type": "string"
+              },
+              "open": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "high": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "low": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "close": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "volume": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "amount": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "tradable": {
+                "type": "boolean"
+              },
+              "price_limit_clear": {
+                "type": "boolean"
+              },
+              "price_basis": {
+                "const": "UNADJUSTED"
+              },
+              "source": {
+                "type": "string"
+              },
+              "synthetic": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "event_id",
+              "instrument_id",
+              "frequency",
+              "trade_date",
+              "start_at",
+              "end_at",
+              "open",
+              "high",
+              "low",
+              "close",
+              "volume",
+              "amount",
+              "tradable",
+              "price_limit_clear",
+              "price_basis",
+              "source",
+              "synthetic"
+            ],
+            "additionalProperties": false
+          },
+          "participation_rate": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          },
+          "slippage": {
+            "type": "string",
+            "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+          }
+        },
+        "required": [
+          "order_id",
+          "bar",
+          "participation_rate",
+          "slippage"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "execution-fill-record": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "fill_id": {
+            "type": "string"
+          },
+          "event_id": {
+            "type": "string"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "order_id",
+          "fill_id",
+          "event_id",
+          "expected_version"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "order-apply-fill": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "fill_id": {
+            "type": "string"
+          },
+          "expected_version": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "order_id",
+          "fill_id",
+          "expected_version"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "account-apply-fill": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "fill_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "fill_id"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data",
+      "idempotency_key"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  },
+  "execution-fill-list": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "request_id": {
+        "type": "string"
+      },
+      "account_id": {
+        "type": "string"
+      },
+      "simulation_id": {
+        "type": "string"
+      },
+      "data": {
+        "type": "object",
+        "properties": {
+          "order_id": {
+            "type": "string"
+          },
+          "offset": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "additionalProperties": false
+      },
+      "idempotency_key": {
+        "type": "string"
+      }
+    },
+    "required": [
+      "schema_version",
+      "request_id",
+      "account_id",
+      "simulation_id",
+      "data"
+    ],
+    "additionalProperties": false,
+    "$schema": "https://json-schema.org/draft/2020-12/schema"
+  }
+}

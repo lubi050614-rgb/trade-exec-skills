@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "fee": "8",
+    "mode": "PER_LOT",
+    "profile_version": "1"
+  },
+  "warnings": []
+}

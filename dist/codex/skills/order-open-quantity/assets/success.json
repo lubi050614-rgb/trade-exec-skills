@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-open-quantity",
+  "data": {
+    "buy_quantity": 0,
+    "sell_quantity": 0,
+    "orders": []
+  },
+  "warnings": []
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-order-open-quantity",
+  "account_id": "mock-SSE",
+  "simulation_id": "does-not-exist",
+  "data": {
+    "instrument_id": "SSE:SIM0001"
+  },
+  "idempotency_key": "plan-1"
+}

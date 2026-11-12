@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "account_id": "mock-futures",
+  "simulation_id": "cta-demo",
+  "asset_class": "FUTURES",
+  "idempotency_key": "example-1",
+  "data": {
+    "contract_id": "SIM:OLD",
+    "target_net_lots": -2,
+    "target_id": "target1",
+    "target_version": 1
+  }
+}

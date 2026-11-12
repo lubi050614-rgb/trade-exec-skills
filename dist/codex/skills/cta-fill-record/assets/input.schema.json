@@ -1,0 +1,66 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "simulation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "account_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_class": {
+      "const": "FUTURES"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "order_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expected_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "fill_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "order_id",
+        "expected_version",
+        "fill_id",
+        "event_id"
+      ],
+      "additionalProperties": false
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "simulation_id",
+    "account_id",
+    "asset_class",
+    "data",
+    "idempotency_key"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,88 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "simulation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "account_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_class": {
+      "const": "FUTURES"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "trade_date": {
+          "type": "string",
+          "minLength": 1
+        },
+        "settlement_version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "as_of": {
+          "type": "string",
+          "minLength": 1
+        },
+        "prices": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "contract_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "prev_settlement_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              },
+              "settlement_price": {
+                "type": "string",
+                "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+              }
+            },
+            "required": [
+              "contract_id",
+              "prev_settlement_price",
+              "settlement_price"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "trade_date",
+        "settlement_version",
+        "as_of",
+        "prices"
+      ],
+      "additionalProperties": false
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "simulation_id",
+    "account_id",
+    "asset_class",
+    "data",
+    "idempotency_key"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

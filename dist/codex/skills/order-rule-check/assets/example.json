@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "request_id": "example-order-rule-check",
+  "account_id": "mock-SSE",
+  "simulation_id": "demo-SSE",
+  "data": {
+    "order": {
+      "instrument_id": "SSE:SIM0001",
+      "side": "BUY",
+      "quantity": 600,
+      "order_type": "LIMIT",
+      "limit_price": "10",
+      "time_in_force": "DAY",
+      "submitted_at": "2026-01-05T09:31:00+08:00",
+      "target_id": "target-1",
+      "target_version": 1,
+      "account_version": 1
+    }
+  },
+  "idempotency_key": "plan-1"
+}

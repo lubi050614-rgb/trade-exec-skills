@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "notional": "2000",
+    "margin": "240.00",
+    "mode": "RATE",
+    "profile_version": "1"
+  },
+  "warnings": []
+}

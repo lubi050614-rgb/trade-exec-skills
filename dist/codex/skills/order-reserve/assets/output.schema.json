@@ -1,0 +1,173 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "instrument_id": {
+              "type": "string"
+            },
+            "side": {
+              "type": "string"
+            },
+            "quantity": {
+              "type": "integer"
+            },
+            "order_type": {
+              "type": "string"
+            },
+            "limit_price": {
+              "type": "string"
+            },
+            "time_in_force": {
+              "type": "string"
+            },
+            "submitted_at": {
+              "type": "string"
+            },
+            "target_id": {
+              "type": "string"
+            },
+            "target_version": {
+              "type": "integer"
+            },
+            "account_version": {
+              "type": "integer"
+            },
+            "order_id": {
+              "type": "string"
+            },
+            "client_order_id": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "version": {
+              "type": "integer"
+            },
+            "filled_quantity": {
+              "type": "integer"
+            },
+            "leaves_quantity": {
+              "type": "integer"
+            },
+            "canceled_quantity": {
+              "type": "integer"
+            },
+            "reserved_cash": {
+              "type": "string"
+            },
+            "reserved_quantity": {
+              "type": "integer"
+            },
+            "notional": {
+              "type": "string"
+            },
+            "charged_fee": {
+              "type": "string"
+            },
+            "cancel_pending": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "instrument_id",
+            "side",
+            "quantity",
+            "order_type",
+            "limit_price",
+            "time_in_force",
+            "submitted_at",
+            "target_id",
+            "target_version",
+            "account_version",
+            "order_id",
+            "client_order_id",
+            "status",
+            "version",
+            "filled_quantity",
+            "leaves_quantity",
+            "canceled_quantity",
+            "reserved_cash",
+            "reserved_quantity",
+            "notional",
+            "charged_fee"
+          ],
+          "additionalProperties": true
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "data",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "retryable",
+            "details"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

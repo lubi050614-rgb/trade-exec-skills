@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-plan",
+  "data": {
+    "drafts": [
+      {
+        "instrument_id": "SSE:SIM0001",
+        "side": "BUY",
+        "quantity": 600,
+        "order_type": "LIMIT",
+        "limit_price": "10",
+        "time_in_force": "DAY",
+        "submitted_at": "2026-01-05T09:31:00+08:00",
+        "target_id": "target-1",
+        "target_version": 1,
+        "account_version": 1
+      }
+    ],
+    "normalization": [
+      {
+        "instrument_id": "SSE:SIM0001",
+        "raw_target_quantity": "1000.0000",
+        "target_quantity": 1000,
+        "rounding_weight_deviation": "0.00"
+      }
+    ],
+    "estimated_buy_cost": "6005.00",
+    "estimated_sell_proceeds": "0.00",
+    "estimated_post_trade_cash": "89995.00",
+    "cash_buffer": "0.00",
+    "funding_sufficient": true,
+    "available_cash": "96000.00",
+    "requires_sell_proceeds": false,
+    "target_cash_weight": "0.90",
+    "commit_status": "COMMITTED"
+  },
+  "warnings": []
+}

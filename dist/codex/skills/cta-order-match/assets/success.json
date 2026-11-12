@@ -1,0 +1,12 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "lots": 2,
+    "price": "100",
+    "expected_version": 1,
+    "model_version": "cta-open-v1"
+  },
+  "warnings": []
+}

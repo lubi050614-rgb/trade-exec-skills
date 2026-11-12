@@ -1,0 +1,286 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "commit_status": {
+                  "type": "string"
+                },
+                "fills": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "fill_id": {
+                        "type": "string"
+                      },
+                      "order_id": {
+                        "type": "string"
+                      },
+                      "quantity": {
+                        "type": "integer"
+                      },
+                      "price": {
+                        "type": "string"
+                      },
+                      "notional": {
+                        "type": "string"
+                      },
+                      "fees": {
+                        "type": "string"
+                      },
+                      "executed_at": {
+                        "type": "string"
+                      },
+                      "market_event_id": {
+                        "type": "string"
+                      },
+                      "model_version": {
+                        "type": "string"
+                      },
+                      "accounting_status": {
+                        "type": "string"
+                      },
+                      "order_applied": {
+                        "type": "boolean"
+                      },
+                      "source_hash": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "fill_id",
+                      "order_id",
+                      "quantity",
+                      "price",
+                      "notional",
+                      "fees",
+                      "executed_at",
+                      "market_event_id",
+                      "model_version",
+                      "accounting_status",
+                      "order_applied",
+                      "source_hash"
+                    ],
+                    "additionalProperties": true
+                  }
+                },
+                "account": {
+                  "type": "object",
+                  "properties": {
+                    "account_id": {
+                      "type": "string"
+                    },
+                    "currency": {
+                      "type": "string"
+                    },
+                    "cash_balance": {
+                      "type": "string"
+                    },
+                    "as_of": {
+                      "type": "string"
+                    },
+                    "version": {
+                      "type": "integer"
+                    },
+                    "positions": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "object",
+                        "properties": {
+                          "quantity": {
+                            "type": "integer"
+                          },
+                          "settled_quantity": {
+                            "type": "integer"
+                          },
+                          "valuation_price": {
+                            "type": "string"
+                          },
+                          "exchange": {
+                            "type": "string"
+                          },
+                          "board": {
+                            "type": "string"
+                          },
+                          "unsettled": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "quantity": {
+                                  "type": "integer"
+                                },
+                                "trade_date": {
+                                  "type": "string"
+                                }
+                              },
+                              "required": [
+                                "quantity",
+                                "trade_date"
+                              ],
+                              "additionalProperties": true
+                            }
+                          },
+                          "frozen_sell_quantity": {
+                            "type": "integer"
+                          },
+                          "sellable_quantity": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "quantity",
+                          "settled_quantity",
+                          "valuation_price",
+                          "exchange",
+                          "board",
+                          "unsettled",
+                          "frozen_sell_quantity",
+                          "sellable_quantity"
+                        ],
+                        "additionalProperties": true
+                      }
+                    },
+                    "frozen_cash": {
+                      "type": "string"
+                    },
+                    "available_cash": {
+                      "type": "string"
+                    },
+                    "total_assets": {
+                      "type": "string"
+                    },
+                    "snapshot_id": {
+                      "type": "string"
+                    },
+                    "reconciliation_status": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "account_id",
+                    "currency",
+                    "cash_balance",
+                    "as_of",
+                    "version",
+                    "positions",
+                    "frozen_cash",
+                    "available_cash",
+                    "total_assets",
+                    "snapshot_id",
+                    "reconciliation_status"
+                  ],
+                  "additionalProperties": true
+                }
+              },
+              "required": [
+                "commit_status",
+                "fills",
+                "account"
+              ],
+              "additionalProperties": true
+            },
+            {
+              "type": "object",
+              "properties": {
+                "commit_status": {
+                  "enum": [
+                    "ACCOUNTING_PENDING",
+                    "RECOVERY_REQUIRED"
+                  ]
+                },
+                "failed_step": {
+                  "type": "string"
+                },
+                "retryable": {
+                  "const": true
+                }
+              },
+              "required": [
+                "commit_status",
+                "failed_step",
+                "retryable"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "data",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "retryable",
+            "details"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

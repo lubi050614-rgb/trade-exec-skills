@@ -1,0 +1,11 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-release-reserve",
+  "data": {
+    "released_cash": "6005.00",
+    "remaining_cash": "0.00",
+    "remaining_quantity": 0
+  },
+  "warnings": []
+}

@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "valid": true,
+    "resources": {
+      "cash": "3",
+      "margin": "0",
+      "fee": "3",
+      "claims": [
+        {
+          "lot_id": "initial",
+          "quantity": 3,
+          "bucket": "YESTERDAY"
+        }
+      ],
+      "account_version": 1
+    },
+    "rule_version": "1"
+  },
+  "warnings": []
+}

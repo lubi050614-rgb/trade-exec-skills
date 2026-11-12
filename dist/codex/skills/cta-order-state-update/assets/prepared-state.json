@@ -1,0 +1,681 @@
+{
+  "account": {
+    "account_id": "mock-futures",
+    "asset_class": "FUTURES",
+    "currency": "CNY",
+    "balance": "100000",
+    "as_of": "2026-01-05T09:02:00+08:00",
+    "version": 3
+  },
+  "contracts": {
+    "SIM:OLD": {
+      "profile_id": "simulation_fixture",
+      "version": "1",
+      "exchange": "SIM_SHFE",
+      "product": "SIM",
+      "multiplier": 10,
+      "price_tick": "1",
+      "min_lots": 1,
+      "lot_step": 1,
+      "margin_mode": "RATE",
+      "margin": {
+        "LONG": "0.10",
+        "SHORT": "0.12"
+      },
+      "fees": {
+        "OPEN": {
+          "mode": "PER_LOT",
+          "value": "2"
+        },
+        "CLOSE": {
+          "mode": "PER_LOT",
+          "value": "2"
+        },
+        "CLOSE_TODAY": {
+          "mode": "PER_LOT",
+          "value": "4"
+        },
+        "CLOSE_YESTERDAY": {
+          "mode": "PER_LOT",
+          "value": "1"
+        }
+      },
+      "close_priority": [
+        "YESTERDAY",
+        "TODAY"
+      ],
+      "separate_close": true,
+      "lower_price": "10",
+      "upper_price": "200",
+      "trade_dates": [
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-12"
+      ],
+      "previous_settlement": {
+        "2026-01-05": "100",
+        "2026-01-06": "110",
+        "2026-01-12": "105"
+      },
+      "disclaimer": "Synthetic futures rules; no official exchange compliance claimed",
+      "contract_id": "SIM:OLD"
+    },
+    "SIM:NEW": {
+      "profile_id": "simulation_fixture",
+      "version": "1",
+      "exchange": "SIM_SHFE",
+      "product": "SIM",
+      "multiplier": 10,
+      "price_tick": "1",
+      "min_lots": 1,
+      "lot_step": 1,
+      "margin_mode": "RATE",
+      "margin": {
+        "LONG": "0.10",
+        "SHORT": "0.12"
+      },
+      "fees": {
+        "OPEN": {
+          "mode": "PER_LOT",
+          "value": "2"
+        },
+        "CLOSE": {
+          "mode": "PER_LOT",
+          "value": "2"
+        },
+        "CLOSE_TODAY": {
+          "mode": "PER_LOT",
+          "value": "4"
+        },
+        "CLOSE_YESTERDAY": {
+          "mode": "PER_LOT",
+          "value": "1"
+        }
+      },
+      "close_priority": [
+        "YESTERDAY",
+        "TODAY"
+      ],
+      "separate_close": true,
+      "lower_price": "10",
+      "upper_price": "200",
+      "trade_dates": [
+        "2026-01-05",
+        "2026-01-06",
+        "2026-01-12"
+      ],
+      "previous_settlement": {
+        "2026-01-05": "100",
+        "2026-01-06": "110",
+        "2026-01-12": "105"
+      },
+      "disclaimer": "Synthetic futures rules; no official exchange compliance claimed",
+      "contract_id": "SIM:NEW"
+    }
+  },
+  "calendar": [
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-05",
+      "start_at": "2026-01-05T09:00:00+08:00",
+      "end_at": "2026-01-05T10:15:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-05",
+      "start_at": "2026-01-05T10:30:00+08:00",
+      "end_at": "2026-01-05T11:30:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-05",
+      "start_at": "2026-01-05T13:30:00+08:00",
+      "end_at": "2026-01-05T15:00:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-06",
+      "start_at": "2026-01-06T09:00:00+08:00",
+      "end_at": "2026-01-06T10:15:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-06",
+      "start_at": "2026-01-06T10:30:00+08:00",
+      "end_at": "2026-01-06T11:30:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-06",
+      "start_at": "2026-01-06T13:30:00+08:00",
+      "end_at": "2026-01-06T15:00:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-12",
+      "start_at": "2026-01-12T09:00:00+08:00",
+      "end_at": "2026-01-12T10:15:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-12",
+      "start_at": "2026-01-12T10:30:00+08:00",
+      "end_at": "2026-01-12T11:30:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-12",
+      "start_at": "2026-01-12T13:30:00+08:00",
+      "end_at": "2026-01-12T15:00:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:OLD",
+      "trade_date": "2026-01-12",
+      "start_at": "2026-01-09T21:00:00+08:00",
+      "end_at": "2026-01-10T02:00:00+08:00",
+      "phase": "NIGHT"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-05",
+      "start_at": "2026-01-05T09:00:00+08:00",
+      "end_at": "2026-01-05T10:15:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-05",
+      "start_at": "2026-01-05T10:30:00+08:00",
+      "end_at": "2026-01-05T11:30:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-05",
+      "start_at": "2026-01-05T13:30:00+08:00",
+      "end_at": "2026-01-05T15:00:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-06",
+      "start_at": "2026-01-06T09:00:00+08:00",
+      "end_at": "2026-01-06T10:15:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-06",
+      "start_at": "2026-01-06T10:30:00+08:00",
+      "end_at": "2026-01-06T11:30:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-06",
+      "start_at": "2026-01-06T13:30:00+08:00",
+      "end_at": "2026-01-06T15:00:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-12",
+      "start_at": "2026-01-12T09:00:00+08:00",
+      "end_at": "2026-01-12T10:15:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-12",
+      "start_at": "2026-01-12T10:30:00+08:00",
+      "end_at": "2026-01-12T11:30:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-12",
+      "start_at": "2026-01-12T13:30:00+08:00",
+      "end_at": "2026-01-12T15:00:00+08:00",
+      "phase": "DAY"
+    },
+    {
+      "contract_id": "SIM:NEW",
+      "trade_date": "2026-01-12",
+      "start_at": "2026-01-09T21:00:00+08:00",
+      "end_at": "2026-01-10T02:00:00+08:00",
+      "phase": "NIGHT"
+    }
+  ],
+  "positions": {
+    "SIM:OLD": [
+      {
+        "lot_id": "initial",
+        "side": "LONG",
+        "bucket": "YESTERDAY",
+        "quantity": 3,
+        "basis_price": "100",
+        "opened_trade_date": "2026-01-02"
+      }
+    ]
+  },
+  "marks": {
+    "SIM:OLD": "100",
+    "SIM:NEW": "100"
+  },
+  "frequency": "1m",
+  "trade_date": "2026-01-05",
+  "orders": {
+    "cta-o1": {
+      "leg_id": "target1:1:SIM:OLD:leg1",
+      "plan_id": "target1:1:SIM:OLD",
+      "contract_id": "SIM:OLD",
+      "side": "SELL",
+      "offset": "CLOSE_YESTERDAY",
+      "lots": 3,
+      "limit_price": "100",
+      "order_type": "LIMIT",
+      "time_in_force": "DAY",
+      "target_id": "target1",
+      "target_version": 1,
+      "trade_date": "2026-01-05",
+      "dependencies": [],
+      "buffer": "0",
+      "order_id": "cta-o1",
+      "submitted_at": "2026-01-05T09:01:00+08:00",
+      "account_version": 1,
+      "client_order_id": "client1",
+      "sequence": 1,
+      "status": "NEW",
+      "version": 1,
+      "original_lots": 3,
+      "filled_lots": 0,
+      "leaves_lots": 3,
+      "canceled_lots": 0,
+      "reserved_cash": "3",
+      "claims": [
+        {
+          "lot_id": "initial",
+          "quantity": 3,
+          "bucket": "YESTERDAY"
+        }
+      ],
+      "charged_fee": "0",
+      "notional": "0",
+      "release_pending": false,
+      "cancel_pending": false
+    }
+  },
+  "fills": {
+    "f1": {
+      "fill_id": "f1",
+      "order_id": "cta-o1",
+      "contract_id": "SIM:OLD",
+      "side": "SELL",
+      "offset": "CLOSE_YESTERDAY",
+      "lots": 2,
+      "price": "100",
+      "notional": "2000",
+      "fee": "2",
+      "reserved_consumption": "2",
+      "executed_at": "2026-01-05T09:02:00+08:00",
+      "trade_date": "2026-01-05",
+      "market_event_id": "cta-bar1",
+      "model_version": "cta-open-v1",
+      "accounting_status": "ACCOUNTING_PENDING",
+      "order_applied": false,
+      "realized_pnl": "0",
+      "source_hash": "ddb40ac145e828011a698d6b766bcc858925ff8ee343aeb6a011d2eb07deed3b"
+    }
+  },
+  "plans": {
+    "target1:1:SIM:OLD": {
+      "plan_id": "target1:1:SIM:OLD",
+      "contract_id": "SIM:OLD",
+      "target_net_lots": -2,
+      "leg_ids": [
+        "target1:1:SIM:OLD:leg1",
+        "target1:1:SIM:OLD:leg2"
+      ],
+      "hash": "ecb5d7a80b2b06401ba1db0075c4db19118431cbcc0e905d9c34c8749f0ddaaf",
+      "normalization": {
+        "actual_long_lots": 3,
+        "actual_short_lots": 0,
+        "actual_net_lots": 3,
+        "pending_open_lots": 0,
+        "pending_close_lots": 0,
+        "gap_lots": -5,
+        "conflicting_order_ids": [],
+        "retained_order_ids": []
+      },
+      "commit_status": "COMMITTED"
+    }
+  },
+  "legs": {
+    "target1:1:SIM:OLD:leg1": {
+      "leg_id": "target1:1:SIM:OLD:leg1",
+      "plan_id": "target1:1:SIM:OLD",
+      "contract_id": "SIM:OLD",
+      "side": "SELL",
+      "offset": "CLOSE_YESTERDAY",
+      "lots": 3,
+      "limit_price": "100",
+      "order_type": "LIMIT",
+      "time_in_force": "DAY",
+      "target_id": "target1",
+      "target_version": 1,
+      "trade_date": "2026-01-05",
+      "dependencies": [],
+      "buffer": "0",
+      "order_id": "cta-o1"
+    },
+    "target1:1:SIM:OLD:leg2": {
+      "leg_id": "target1:1:SIM:OLD:leg2",
+      "plan_id": "target1:1:SIM:OLD",
+      "contract_id": "SIM:OLD",
+      "side": "SELL",
+      "offset": "OPEN",
+      "lots": 2,
+      "limit_price": "100",
+      "order_type": "LIMIT",
+      "time_in_force": "DAY",
+      "target_id": "target1",
+      "target_version": 1,
+      "trade_date": "2026-01-05",
+      "dependencies": [
+        "target1:1:SIM:OLD:leg1"
+      ],
+      "buffer": "0",
+      "order_id": null
+    }
+  },
+  "rolls": {},
+  "events": {
+    "cta-bar1": {
+      "hash": "820aefe67dd29d313a6a5d13cacc05643229c53dcf143660abbf3479390de380",
+      "bar": {
+        "event_id": "cta-bar1",
+        "contract_id": "SIM:OLD",
+        "multiplier": 10,
+        "volume_unit": "lots",
+        "frequency": "1m",
+        "trade_date": "2026-01-05",
+        "start_at": "2026-01-05T09:01:00+08:00",
+        "end_at": "2026-01-05T09:02:00+08:00",
+        "open": "100",
+        "high": "100",
+        "low": "100",
+        "close": "100",
+        "volume": 2,
+        "tradable": true,
+        "price_limit_clear": true,
+        "price_basis": "UNADJUSTED",
+        "synthetic": true,
+        "source": "synthetic"
+      },
+      "model": {
+        "participation_rate": "1",
+        "slippage": "0"
+      },
+      "done": false,
+      "recovering": false
+    }
+  },
+  "last_bar": {
+    "SIM:OLD": "2026-01-05T09:02:00+08:00"
+  },
+  "capacity": {
+    "cta-bar1": 2
+  },
+  "idempotency": {
+    "cta-order-plan:setup1": {
+      "hash": "ce67627977d3c86fbe75862003cac639d062c1d871e2d6d88ae878fc12ffa94d",
+      "result": {
+        "plan_id": "target1:1:SIM:OLD",
+        "contract_id": "SIM:OLD",
+        "target_net_lots": -2,
+        "leg_ids": [
+          "target1:1:SIM:OLD:leg1",
+          "target1:1:SIM:OLD:leg2"
+        ],
+        "hash": "ecb5d7a80b2b06401ba1db0075c4db19118431cbcc0e905d9c34c8749f0ddaaf",
+        "normalization": {
+          "actual_long_lots": 3,
+          "actual_short_lots": 0,
+          "actual_net_lots": 3,
+          "pending_open_lots": 0,
+          "pending_close_lots": 0,
+          "gap_lots": -5,
+          "conflicting_order_ids": [],
+          "retained_order_ids": []
+        },
+        "commit_status": "COMMITTED",
+        "legs": [
+          {
+            "leg_id": "target1:1:SIM:OLD:leg1",
+            "plan_id": "target1:1:SIM:OLD",
+            "contract_id": "SIM:OLD",
+            "side": "SELL",
+            "offset": "CLOSE_YESTERDAY",
+            "lots": 3,
+            "limit_price": "100",
+            "order_type": "LIMIT",
+            "time_in_force": "DAY",
+            "target_id": "target1",
+            "target_version": 1,
+            "trade_date": "2026-01-05",
+            "dependencies": [],
+            "buffer": "0",
+            "order_id": null
+          },
+          {
+            "leg_id": "target1:1:SIM:OLD:leg2",
+            "plan_id": "target1:1:SIM:OLD",
+            "contract_id": "SIM:OLD",
+            "side": "SELL",
+            "offset": "OPEN",
+            "lots": 2,
+            "limit_price": "100",
+            "order_type": "LIMIT",
+            "time_in_force": "DAY",
+            "target_id": "target1",
+            "target_version": 1,
+            "trade_date": "2026-01-05",
+            "dependencies": [
+              "target1:1:SIM:OLD:leg1"
+            ],
+            "buffer": "0",
+            "order_id": null
+          }
+        ]
+      }
+    },
+    "cta-order-submit:setup2": {
+      "hash": "196231b7e1003fb30c2875e9360a3d97e67f9c5ad6af31f8b551554d79c2234c",
+      "result": {
+        "order": {
+          "leg_id": "target1:1:SIM:OLD:leg1",
+          "plan_id": "target1:1:SIM:OLD",
+          "contract_id": "SIM:OLD",
+          "side": "SELL",
+          "offset": "CLOSE_YESTERDAY",
+          "lots": 3,
+          "limit_price": "100",
+          "order_type": "LIMIT",
+          "time_in_force": "DAY",
+          "target_id": "target1",
+          "target_version": 1,
+          "trade_date": "2026-01-05",
+          "dependencies": [],
+          "buffer": "0",
+          "order_id": "cta-o1",
+          "submitted_at": "2026-01-05T09:01:00+08:00",
+          "account_version": 1,
+          "client_order_id": "client1",
+          "sequence": 1,
+          "status": "NEW",
+          "version": 1,
+          "original_lots": 3,
+          "filled_lots": 0,
+          "leaves_lots": 3,
+          "canceled_lots": 0,
+          "reserved_cash": "3",
+          "claims": [
+            {
+              "lot_id": "initial",
+              "quantity": 3,
+              "bucket": "YESTERDAY"
+            }
+          ],
+          "charged_fee": "0",
+          "notional": "0",
+          "release_pending": false,
+          "cancel_pending": false
+        },
+        "account": {
+          "account_id": "mock-futures",
+          "asset_class": "FUTURES",
+          "currency": "CNY",
+          "balance": "100000",
+          "as_of": "2026-01-05T09:01:00+08:00",
+          "version": 2,
+          "equity": "100000",
+          "floating_pnl": "0",
+          "position_margin": "300.00",
+          "frozen_cash": "3",
+          "available_cash": "99697.00",
+          "margin_shortfall": "0",
+          "risk_status": "NORMAL",
+          "positions": {
+            "SIM:OLD": {
+              "long_today": 0,
+              "long_yesterday": 3,
+              "short_today": 0,
+              "short_yesterday": 0,
+              "available_long_today": 0,
+              "available_long_yesterday": 0,
+              "available_short_today": 0,
+              "available_short_yesterday": 0,
+              "net_lots": 3,
+              "lots": [
+                {
+                  "lot_id": "initial",
+                  "side": "LONG",
+                  "bucket": "YESTERDAY",
+                  "quantity": 3,
+                  "basis_price": "100",
+                  "opened_trade_date": "2026-01-02"
+                }
+              ]
+            }
+          },
+          "trade_date": "2026-01-05",
+          "reconciliation_status": "CONSISTENT"
+        },
+        "commit_status": "COMMITTED"
+      }
+    },
+    "cta-fill-record:setup3": {
+      "hash": "ddb40ac145e828011a698d6b766bcc858925ff8ee343aeb6a011d2eb07deed3b",
+      "result": {
+        "fill_id": "f1",
+        "order_id": "cta-o1",
+        "contract_id": "SIM:OLD",
+        "side": "SELL",
+        "offset": "CLOSE_YESTERDAY",
+        "lots": 2,
+        "price": "100",
+        "notional": "2000",
+        "fee": "2",
+        "reserved_consumption": "2",
+        "executed_at": "2026-01-05T09:02:00+08:00",
+        "trade_date": "2026-01-05",
+        "market_event_id": "cta-bar1",
+        "model_version": "cta-open-v1",
+        "accounting_status": "ACCOUNTING_PENDING",
+        "order_applied": false,
+        "realized_pnl": "0",
+        "source_hash": "ddb40ac145e828011a698d6b766bcc858925ff8ee343aeb6a011d2eb07deed3b"
+      }
+    }
+  },
+  "settlements": {},
+  "day_totals": {},
+  "day_opening": {
+    "2026-01-05": "100000"
+  },
+  "trace": [
+    {
+      "tool": "cta-trading-session",
+      "request_id": "setup1",
+      "event_id": null,
+      "order_id": null
+    },
+    {
+      "tool": "cta-contract-spec",
+      "request_id": "setup1",
+      "event_id": null,
+      "order_id": null
+    },
+    {
+      "tool": "cta-position-gap",
+      "request_id": "setup1",
+      "event_id": null,
+      "order_id": null
+    },
+    {
+      "tool": "cta-offset-split",
+      "request_id": "setup1",
+      "event_id": null,
+      "order_id": null
+    },
+    {
+      "tool": "cta-order-plan",
+      "request_id": "setup1",
+      "event_id": null,
+      "order_id": null
+    },
+    {
+      "tool": "cta-order-rule-check",
+      "request_id": "setup2",
+      "event_id": null,
+      "order_id": null
+    },
+    {
+      "tool": "cta-order-register",
+      "request_id": "setup2",
+      "event_id": null,
+      "order_id": null
+    },
+    {
+      "tool": "cta-order-submit",
+      "request_id": "setup2",
+      "event_id": null,
+      "order_id": null
+    },
+    {
+      "tool": "cta-fill-record",
+      "request_id": "setup3",
+      "event_id": "cta-bar1",
+      "order_id": "cta-o1"
+    }
+  ],
+  "previous_settlement": {
+    "SIM:OLD": "100",
+    "SIM:NEW": "100"
+  },
+  "active_targets": {
+    "SIM:OLD": {
+      "target_id": "target1",
+      "target_version": 1
+    }
+  }
+}

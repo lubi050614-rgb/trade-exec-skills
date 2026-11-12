@@ -1,0 +1,81 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-order-query",
+  "data": {
+    "order": {
+      "instrument_id": "SSE:SIM0001",
+      "side": "BUY",
+      "quantity": 600,
+      "order_type": "LIMIT",
+      "limit_price": "10",
+      "time_in_force": "DAY",
+      "submitted_at": "2026-01-05T09:31:00+08:00",
+      "target_id": "target-1",
+      "target_version": 1,
+      "account_version": 1,
+      "order_id": "o-1",
+      "client_order_id": "client-1",
+      "status": "PARTIALLY_FILLED",
+      "version": 4,
+      "filled_quantity": 300,
+      "leaves_quantity": 300,
+      "canceled_quantity": 0,
+      "reserved_cash": "3000.00",
+      "reserved_quantity": 0,
+      "notional": "3000.00",
+      "charged_fee": "5.00",
+      "cancel_pending": false,
+      "average_price": "10.00"
+    },
+    "fills": [
+      {
+        "fill_id": "bar-1:o-1",
+        "order_id": "o-1",
+        "quantity": 300,
+        "price": "10",
+        "notional": "3000.00",
+        "fees": "5.00",
+        "executed_at": "2026-01-05T09:32:00+08:00",
+        "market_event_id": "bar-1",
+        "model_version": "open-conservative-v1",
+        "accounting_status": "BOOKED",
+        "order_applied": true,
+        "source_hash": "e29ac7c42719255387dc7b8149c6a3776105c7dacd34efcc3a741a57f20a0995"
+      }
+    ],
+    "total": 1,
+    "next_offset": null,
+    "account": {
+      "account_id": "mock-SSE",
+      "currency": "CNY",
+      "cash_balance": "92995.00",
+      "as_of": "2026-01-05T09:32:00+08:00",
+      "version": 3,
+      "positions": {
+        "SSE:SIM0001": {
+          "quantity": 700,
+          "settled_quantity": 400,
+          "valuation_price": "10",
+          "exchange": "SSE",
+          "board": "SIM_MAIN",
+          "unsettled": [
+            {
+              "quantity": 300,
+              "trade_date": "2026-01-05"
+            }
+          ],
+          "frozen_sell_quantity": 0,
+          "sellable_quantity": 400
+        }
+      },
+      "frozen_cash": "3000.00",
+      "available_cash": "89995.00",
+      "total_assets": "99995.00",
+      "snapshot_id": "3",
+      "reconciliation_status": "CONSISTENT"
+    },
+    "commit_status": "COMMITTED"
+  },
+  "warnings": []
+}

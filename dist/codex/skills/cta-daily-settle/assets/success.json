@@ -1,0 +1,59 @@
+{
+  "ok": true,
+  "schema_version": "1.0",
+  "request_id": "example-1",
+  "data": {
+    "commit_status": "COMMITTED",
+    "trade_date": "2026-01-05",
+    "settlement_version": 1,
+    "opening_equity": "100000",
+    "net_deposits": "0",
+    "realized_pnl": "0",
+    "holding_pnl": "300",
+    "fees": "0",
+    "incremental_booking_adjustment": "300",
+    "closing_equity": "100300",
+    "next_trade_date": "2026-01-06",
+    "account": {
+      "account_id": "mock-futures",
+      "asset_class": "FUTURES",
+      "currency": "CNY",
+      "balance": "100300",
+      "as_of": "2026-01-05T15:00:00+08:00",
+      "version": 2,
+      "equity": "100300",
+      "floating_pnl": "0",
+      "position_margin": "330.00",
+      "frozen_cash": "0",
+      "available_cash": "99970.00",
+      "margin_shortfall": "0",
+      "risk_status": "NORMAL",
+      "positions": {
+        "SIM:OLD": {
+          "long_today": 0,
+          "long_yesterday": 3,
+          "short_today": 0,
+          "short_yesterday": 0,
+          "available_long_today": 0,
+          "available_long_yesterday": 3,
+          "available_short_today": 0,
+          "available_short_yesterday": 0,
+          "net_lots": 3,
+          "lots": [
+            {
+              "lot_id": "initial",
+              "side": "LONG",
+              "bucket": "YESTERDAY",
+              "quantity": 3,
+              "basis_price": "110",
+              "opened_trade_date": "2026-01-02"
+            }
+          ]
+        }
+      },
+      "trade_date": "2026-01-06",
+      "reconciliation_status": "CONSISTENT"
+    }
+  },
+  "warnings": []
+}

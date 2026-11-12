@@ -1,0 +1,202 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": true
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "data": {
+          "type": "object",
+          "properties": {
+            "drafts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "instrument_id": {
+                    "type": "string"
+                  },
+                  "side": {
+                    "type": "string"
+                  },
+                  "quantity": {
+                    "type": "integer"
+                  },
+                  "order_type": {
+                    "type": "string"
+                  },
+                  "limit_price": {
+                    "type": "string"
+                  },
+                  "time_in_force": {
+                    "type": "string"
+                  },
+                  "submitted_at": {
+                    "type": "string"
+                  },
+                  "target_id": {
+                    "type": "string"
+                  },
+                  "target_version": {
+                    "type": "integer"
+                  },
+                  "account_version": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "instrument_id",
+                  "side",
+                  "quantity",
+                  "order_type",
+                  "limit_price",
+                  "time_in_force",
+                  "submitted_at",
+                  "target_id",
+                  "target_version",
+                  "account_version"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "normalization": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "instrument_id": {
+                    "type": "string"
+                  },
+                  "raw_target_quantity": {
+                    "type": "string"
+                  },
+                  "target_quantity": {
+                    "type": "integer"
+                  },
+                  "rounding_weight_deviation": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "instrument_id",
+                  "raw_target_quantity",
+                  "target_quantity",
+                  "rounding_weight_deviation"
+                ],
+                "additionalProperties": true
+              }
+            },
+            "estimated_buy_cost": {
+              "type": "string"
+            },
+            "estimated_sell_proceeds": {
+              "type": "string"
+            },
+            "estimated_post_trade_cash": {
+              "type": "string"
+            },
+            "cash_buffer": {
+              "type": "string"
+            },
+            "funding_sufficient": {
+              "type": "boolean"
+            },
+            "available_cash": {
+              "type": "string"
+            },
+            "requires_sell_proceeds": {
+              "type": "boolean"
+            },
+            "target_cash_weight": {
+              "type": "string"
+            },
+            "commit_status": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "drafts",
+            "normalization",
+            "estimated_buy_cost",
+            "estimated_sell_proceeds",
+            "estimated_post_trade_cash",
+            "cash_buffer",
+            "funding_sufficient",
+            "available_cash",
+            "requires_sell_proceeds",
+            "target_cash_weight",
+            "commit_status"
+          ],
+          "additionalProperties": true
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "data",
+        "warnings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "ok": {
+          "const": false
+        },
+        "schema_version": {
+          "const": "1.0"
+        },
+        "request_id": {
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "properties": {
+            "code": {
+              "type": "string"
+            },
+            "message": {
+              "type": "string"
+            },
+            "retryable": {
+              "type": "boolean"
+            },
+            "details": {
+              "type": "object"
+            }
+          },
+          "required": [
+            "code",
+            "message",
+            "retryable",
+            "details"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "ok",
+        "schema_version",
+        "request_id",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

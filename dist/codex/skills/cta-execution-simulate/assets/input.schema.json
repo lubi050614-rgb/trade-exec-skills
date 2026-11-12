@@ -1,0 +1,165 @@
+{
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "simulation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "account_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "asset_class": {
+      "const": "FUTURES"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "bar": {
+          "type": "object",
+          "properties": {
+            "event_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "contract_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "multiplier": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "volume_unit": {
+              "const": "lots"
+            },
+            "frequency": {
+              "enum": [
+                "1m",
+                "1d"
+              ]
+            },
+            "trade_date": {
+              "type": "string",
+              "minLength": 1
+            },
+            "start_at": {
+              "type": "string",
+              "minLength": 1
+            },
+            "end_at": {
+              "type": "string",
+              "minLength": 1
+            },
+            "open": {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+            },
+            "high": {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+            },
+            "low": {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+            },
+            "close": {
+              "type": "string",
+              "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+            },
+            "volume": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "tradable": {
+              "type": "boolean"
+            },
+            "price_limit_clear": {
+              "type": "boolean"
+            },
+            "price_basis": {
+              "const": "UNADJUSTED"
+            },
+            "synthetic": {
+              "const": true
+            },
+            "source": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "event_id",
+            "contract_id",
+            "multiplier",
+            "volume_unit",
+            "frequency",
+            "trade_date",
+            "start_at",
+            "end_at",
+            "open",
+            "high",
+            "low",
+            "close",
+            "volume",
+            "tradable",
+            "price_limit_clear",
+            "price_basis",
+            "synthetic",
+            "source"
+          ],
+          "additionalProperties": false
+        },
+        "visible_at": {
+          "type": "string",
+          "minLength": 1
+        },
+        "participation_rate": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        },
+        "slippage": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(\\.[0-9]+)?$"
+        },
+        "fail_after": {
+          "enum": [
+            "record",
+            "state",
+            "book",
+            "release"
+          ]
+        }
+      },
+      "required": [
+        "bar",
+        "visible_at",
+        "participation_rate",
+        "slippage"
+      ],
+      "additionalProperties": false
+    },
+    "idempotency_key": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "simulation_id",
+    "account_id",
+    "asset_class",
+    "data",
+    "idempotency_key"
+  ],
+  "additionalProperties": false,
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

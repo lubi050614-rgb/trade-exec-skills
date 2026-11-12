@@ -1,0 +1,11 @@
+{
+  "ok": false,
+  "schema_version": "1.0",
+  "request_id": "example-order-precheck",
+  "error": {
+    "code": "UNKNOWN_SIMULATION",
+    "message": "UNKNOWN_SIMULATION",
+    "retryable": false,
+    "details": {}
+  }
+}
